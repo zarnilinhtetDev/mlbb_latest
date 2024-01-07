@@ -50,10 +50,30 @@ class ResellerController extends Controller
 
             // compare $coin_order wtih coin balace from credit table
             // if $coin_order is less than coinbalance call the orderForm fucntion else break the loop and return message insufficient balace
-            if ($coin_balance->coin_balance <= $coin_order)
+            if ($coin_balance->coin_balance >= $coin_order) {
+
+                echo $coin_balance->coin_balance;
+                $balance = $coin_balance->coin_balance;
+                $newBalance = $balance - $coin_order;
+                // $coin_balance->$coin_balance = $newBalance;
+                // $coin_balance->save();
+                // Credit::where('user_id', $userid)->update([
+                //     'coin_balance' => $newBalance
+                // ]);
+                $bb = Credit::find($coin_balance->id);
+                $bb->coin_balance = $newBalance;
+                $bb->save();
+                // dd($newBalance);
+
+
                 // $response = $this->orderForm($datas[0], $datas[1], $datas[2]);
-                dd("die here");
-            else {
+                // dd($coin_order);
+                // dd("die here");
+                $response[0] = (object)['message' => 'Success from sse'];
+                $response[1] = $datas[0];
+                $response[2] = $datas[1];
+                $response[3] = $datas[2];
+            } else {
 
                 $response[0] = (object)['message' => 'Insufficient balance from sse'];
                 $response[1] = $datas[0];
@@ -84,6 +104,8 @@ class ResellerController extends Controller
                 'uid' => $uid,
                 'zid' => $zid,
                 'pid' => $pid,
+                'coin_amount' => $coin_order,
+                'main_coin' => $newBalance,
             ]);
 
 
