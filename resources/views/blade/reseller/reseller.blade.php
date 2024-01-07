@@ -62,14 +62,37 @@
                                                     <h3 class="text-center">Reseller</h3>
                                                 </div>
                                                 <div class="justify-content-center d-flex">
-                                                    <textarea id="messageTextArea" name="message" rows="19" cols="60"
+                                                    {{-- <textarea id="messageTextArea" name="message" rows="19" cols="60"
                                                         style="color: red; font-size: 11px; font-family: 'Courier New', Courier, monospace;">
     @if (isset($responses))
 @foreach ($responses as $response)
 User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $response[2] }}
 @endforeach
 @endif
-</textarea>
+
+
+</textarea> --}}
+
+                                                    <div id="messageTextArea" name="message"
+                                                        style="color: red;font-size: 11px;font-family: 'Courier New', Courier, monospace;border:solid green 1px;padding: 10px;">
+                                                        {{-- @if (session('responses'))
+@foreach (session('responses') as $response)
+User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $response[2] }}
+@endforeach
+@endif --}}
+
+                                                        <?php if (Session::has('val')) {
+                                                            // echo Session::get('val');
+                                                        
+                                                            $sec_value = explode(',', Session::get('val'));
+                                                            //  echo gettype($sec_value);
+                                                            foreach ($sec_value as $dat) {
+                                                                echo $dat . '<br>';
+                                                            }
+                                                        }
+                                                        ?>
+
+                                                    </div>
 
                                                 </div>
                                                 <form action="{{ url('reseller_store') }}" method="post">

@@ -56,8 +56,9 @@ class ResellerController extends Controller
             else {
 
                 $response[0] = (object)['message' => 'Insufficient balance from sse'];
-                $response[1] = $datas[1];
-                $response[2] = $datas[2];
+                $response[1] = $datas[0];
+                $response[2] = $datas[1];
+                $response[3] = $datas[2];
                 //  dd($response);
                 Session::flash('message', 'Insufficient balance ');
                 break;
@@ -88,9 +89,28 @@ class ResellerController extends Controller
 
             // dd($response);
         }
-
+        // dd($response);
+        // $responses[] = $response; correct
         $responses[] = $response;
-        //dd($responses);
+        $response[0] = $response[0]->message;
+        $arr_res = $response;
+        $sec = implode(' ', $arr_res);
+        //dd($sec);
+        // if (session('responses')) {
+        //     foreach (session('responses') as $value) {
+        //         // User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $response[2] }}
+        //         $value += $response;
+        //     }
+        // }
+        //session(['responses' => $responses]);
+
+
+        if (Session::has('val')) {
+            $old_val = Session::get('val');
+            $sec = $sec . "," . $old_val;
+            Session::put('val', $sec);
+        } else  Session::put('val', $sec);
+
         return view('blade.reseller.reseller', compact('responses'));
     }
 
@@ -117,7 +137,7 @@ class ResellerController extends Controller
             $data1[$key] = array($uid, $zid, $pid);
         }
         return $data1;
-        // print_r($data1);
+
 
         // echo "<br>" . count($data1);
     }
@@ -216,9 +236,7 @@ class ResellerController extends Controller
 
     public function resellerHistory($id)
     {
-
-        // $transaction = TransationHistory::all();
-        $transaction = TransationHistory::find($id);
-        return view('blade.reseller.resellerHistory', compact('transaction'));
+        $transactions = TransationHistory::where('user_id', $id)->get();
+        return view('blade.reseller.resellerHistory', compact('transactions'));
     }
 }
