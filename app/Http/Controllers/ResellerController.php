@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\TransationHistory;
+use App\Models\Credit;
 use Illuminate\Http\Request;
+use Session;
+
 
 class ResellerController extends Controller
 {
@@ -13,15 +16,54 @@ class ResellerController extends Controller
     }
     public function reseller_store(Request $request)
     {
+        $p_coin_13 = 80;
+        $coin_balance = 100;
 
         $data = $this->convert_string_to_data($request->code);
-        //dd($data);
-        $response = [];
 
+
+
+        // dd($data[0][2]);
+        $response = [];
+        $responses = [];
+        $coin_order = 0;
         foreach ($data as $datas) {
-            $response = $this->orderForm($datas[0], $datas[1], $datas[2]);
+            //*************************balance check start here */
+
+            $pid = $datas[2];
+            //below if condition statement will be replace with db data (we are goin to have the db with different coin for different zone)
+            if ($pid = 13) $p_coin = 80;
+            else if ($pid = 23) $p_coin = 160;
+            $coin_order += $p_coin;
+            //get user id from user table . user auth->userid and get user id
+            $userid = 1;
+            $coin_balance = Credit::where('user_id', $userid)->first();
+            //dd($coin_balance);
+            //here will be the process or function to check the coin amount
+            //from the product id from database
+            // $p_coin = 80;
+            // $coin_order+= $p_coin; //hard code to be replace from db data
+            //here will be checked and compare from user main coin  balance
+            //if less then $p_coin_pid fial and retrun with messaage insuffician coin
+
+
+
+            // compare $coin_order wtih coin balace from credit table
+            // if $coin_order is less than coinbalance call the orderForm fucntion else break the loop and return message insufficient balace
+            if ($coin_balance->coin_balance <= $coin_order)
+                // $response = $this->orderForm($datas[0], $datas[1], $datas[2]);
+                dd("die here");
+            else {
+
+                $response[0] = (object)['message' => 'Insufficient balance from sse'];
+                $response[1] = $datas[1];
+                $response[2] = $datas[2];
+                //  dd($response);
+                Session::flash('message', 'Insufficient balance ');
+                break;
+            }
             // $response = $response;
-            // dd($response);
+            // dd($response . "what the fuck");
 
             // $uid = is_object($response[0]) ? $response[0]->message : null;
             $message = $response[0]->message;
@@ -43,10 +85,12 @@ class ResellerController extends Controller
                 'pid' => $pid,
             ]);
 
-            $responses[] = $response;
+
             // dd($response);
         }
 
+        $responses[] = $response;
+        //dd($responses);
         return view('blade.reseller.reseller', compact('responses'));
     }
 

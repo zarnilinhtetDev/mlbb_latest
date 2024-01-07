@@ -28,6 +28,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
+
                         <div class="col-12">
                             <!-- Content Header (Page header) -->
                             <section class="content-header text-white">
@@ -74,8 +75,10 @@ User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $resp
                                                 <form action="{{ url('reseller_store') }}" method="post">
                                                     @csrf
                                                     <div class="card-body ml-3">
-                                                        <input type="text" id="code" name="code">
-                                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                                        <input type="text" id="code" name="code"
+                                                            class="form-control">
+                                                        <input type="submit" value="Submit"
+                                                            class="btn btn-primary mt-3">
                                                     </div>
                                                 </form>
                                             </div>

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('uid')->nullable();
             $table->string('zid')->nullable();
             $table->string('pid')->nullable();
-
+            $table->string('coin_amount')->nullable();
+            $table->string('coin_balance')->nullable();
             $table->timestamps();
         });
     }
