@@ -105,7 +105,7 @@ class ResellerController extends Controller
                 'zid' => $zid,
                 'pid' => $pid,
                 'coin_amount' => $coin_order,
-                'main_coin' => $newBalance,
+                'coin_balance' => $newBalance,
             ]);
 
 
