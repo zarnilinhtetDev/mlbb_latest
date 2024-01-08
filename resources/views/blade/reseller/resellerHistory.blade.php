@@ -2,5 +2,5 @@
     {{ $transaction->message }}
     {{ $transaction->uid }}
     {{ $transaction->zid }}
-    {{ $transaction->pid }}
+    {{ $transaction->pid }}<br>
 @endforeach

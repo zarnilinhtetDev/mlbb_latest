@@ -22,7 +22,11 @@
 
 
 
-                <li><a class="dropdown-item btn bg-danger  logout-link" href="{{ url('/logout') }}">Logout</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" calss="btn">layout</button>
+                    </form>
                 </li>
             </ul>
         </nav>

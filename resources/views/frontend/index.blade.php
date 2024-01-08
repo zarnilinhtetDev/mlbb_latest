@@ -53,8 +53,8 @@
                 </form> --}}
 
 
-                <a class="nav-link text-white btn btn-primary mx-3" href="{{ asset('frontend/login.html') }}">Login</a>
-
+                {{-- <a class="nav-link text-white btn btn-primary mx-3" href="{{ asset('frontend/login.html') }}">Login</a> --}}
+                <a class="nav-link text-white btn btn-primary mx-3" href="{{ url('/login') }}">Login</a>
 
             </div>
         </div>

@@ -17,16 +17,18 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('/reseller') }}" class="nav-link">
-                        <i class="fa-solid fa-clipboard-check"></i>
-                        <p class="pl-4">
-                            Reseller
-                            {{-- <i class="right fas fa-angle-left"></i> --}}
-                        </p>
-                    </a>
-                </li>
-                @if (auth()->user()->is_admin)
+                @if (auth()->user()->is_admin == 1 || auth()->user()->is_admin == 2)
+                    <li class="nav-item">
+                        <a href="{{ url('/reseller') }}" class="nav-link">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                            <p class="pl-4">
+                                Reseller
+                                {{-- <i class="right fas fa-angle-left"></i> --}}
+                            </p>
+                        </a>
+                    </li>
+                @endif
+                @if (auth()->user()->is_admin == 2)
                     <a class="nav-link" href="{{ url('/user') }}">
                         <i class="fa-solid fa-user-plus"></i>
                         <p class="pl-3">
