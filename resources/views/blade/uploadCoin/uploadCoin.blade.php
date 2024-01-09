@@ -1,5 +1,99 @@
 @include('master.header')
 
+<style>
+    .content-wrapper {
+        background: #13234d;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        /* For Firefox */
+    }
+
+    /* Define the styles for the button */
+    .custom-btn {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #162858, #0069D9);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.1s ease;
+    }
+
+    /* Add the neon light effect on hover */
+    .custom-btn:hover {
+        box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
+    }
+
+
+
+    /* Define the styles for the input fields */
+    .animated-input {
+        border: 2px solid #ccc;
+        padding: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Add the animation effect on hover */
+    .animated-input:hover {
+        transform: scale(1.1);
+        /* Change the scale value to adjust the animation effect */
+    }
+
+    /* Define the keyframes animation */
+    @keyframes inputHoverEffect {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    /* Apply the keyframes animation on hover */
+    .animated-input:hover {
+        animation: inputHoverEffect 0.3s ease;
+    }
+
+    .custom-logout {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #162858, #fd0000);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s ease;
+    }
+
+
+
+    /* Add the neon light effect on hover */
+    .custom-logout:hover {
+        box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
+    }
+</style>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
@@ -21,7 +115,7 @@
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn custom-logout">Logout</button>
                     </form>
 
                 </li>
@@ -36,12 +130,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6 ">
-                            <h1>Coin</h1>
+                            {{-- <h1>Coin</h1> --}}
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Coin</li>
+                                {{-- <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Coin</li> --}}
                             </ol>
                         </div>
                     </div>
@@ -64,12 +158,12 @@
                                 <input type="hidden" class="form-control" id="user_id" aria-describedby="emailHelp"
                                     name="user_id" value="{{ $user->id }}" required>
                                 <label for="exampleInputEmail1">Coin <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                <input type="text" class="form-control animated-input" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" name="coin" required>
                                 @error('coin')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                                <button type="submit" class="btn btn-primary my-3"
+                                <button type="submit" class="btn btn-primary my-3 custom-btn"
                                     style="background-color:
                                     #0069D9">Submit</button>
                             </div>
@@ -90,17 +184,6 @@
 
 
         </div>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; SSE Web Solutions</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+
         @include('master.footer')
     </div>

@@ -140,13 +140,13 @@ class UserController extends Controller
             $existingCoin = Credit::where('user_id', $request['user_id'])->first();
             $existingCoin->coin_balance = $existingCoin->coin_balance + $request->coin;
             $existingCoin->update();
-            return redirect()->back()->with('success', 'Coin Added successfully');
+            return redirect(route('user'))->with('success', 'Coin Added successfully');
         } else {
             $credit = new Credit();
             $credit->user_id = $request->user_id;
             $credit->coin_balance = $request->coin;
             $credit->save();
-            return redirect()->back()->with('success', 'Coin Added successfully');
+            return redirect(route('user'))->with('success', 'Coin Added successfully');
         }
     }
 }

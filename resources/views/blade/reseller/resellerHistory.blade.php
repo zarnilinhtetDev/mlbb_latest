@@ -48,6 +48,30 @@
         background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
         background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
     }
+
+    .custom-logout {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #162858, #fd0000);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s ease;
+    }
+
+
+
+    /* Add the neon light effect on hover */
+    .custom-logout:hover {
+        box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
+    }
 </style>
 
 <body class="hold-transition sidebar-mini">
@@ -72,7 +96,7 @@
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn custom-logout">Logout</button>
                     </form>
 
                 </li>
@@ -85,14 +109,14 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6 ">
-                            <h1>History</h1>
+                            {{-- <h1>History</h1> --}}
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a>
+                                {{-- <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item">History
-                                </li>
+                                </li> --}}
                             </ol>
                         </div>
                     </div>

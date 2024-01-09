@@ -184,99 +184,77 @@
                                 </div><!-- /.container-fluid -->
                             </section>
                             <section class="content">
-                                @if (session('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ session('success') }}
 
-                                    </div>
-                                @endif
-                                @if (session('error'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ session('error') }}
-
-                                    </div>
-                                @endif
-                                @if (session('success_import'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ session('success_import') }}
-
-                                    </div>
-                                @endif
-                                @if (session('delete_success'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ session('delete_success') }}
-
-                                    </div>
-                                @endif
                                 <section class="content-body">
                                     <div class="row mt-6">
                                         <div class="col-md-6 mx-auto">
 
                                             <div class="card gaming-card p-4 mb-4">
                                                 <div class="card-header mb-3">
-                                                    <h3 class="card-title">Edit User</h3>
+                                                    <h3 class="card-title">Edit Zone</h3>
                                                 </div>
-                                                <form action="{{ url('update_user', $userShow->id) }}" method="post">
+                                                <form action="{{ url('update_zone', $showZone->id) }}" method="post">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Name <span
+                                                        <label for="product_id">Prodcut Id <span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control animated-input"
-                                                            id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                            name="name" value="{{ $userShow->name }}" required>
+                                                        <input type="text" class="form-control" id="product_id"
+                                                            aria-describedby="emailHelp" name="product_id"
+                                                            value="{{ $showZone->product_id }}" required>
 
 
                                                     </div>
                                                     <div class="form-group mt-3">
-                                                        <label for="exampleInputEmail1">Email address <span
+                                                        <label for="code">Code<span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="email" class="form-control animated-input"
-                                                            id="exampleInputEmail1" value="{{ $userShow->email }} "
-                                                            aria-describedby="emailHelp" name="email" required>
+                                                        <input type="text" class="form-control" id="code"
+                                                            value="{{ $showZone->code }} " aria-describedby="emailHelp"
+                                                            name="code" required>
 
                                                     </div>
-
-                                                    <div class="form-group mt-3"><label for="userRole"> User Role <span
-                                                                class="text-danger">*</span></label>
-                                                        <select class="form-select form-control animated-input"
-                                                            aria-label="Default select example" name="userRole"
-                                                            id="userRole" required>
-                                                            @if ($userShow->is_admin == 2)
-                                                                {
-                                                                <option selected disabled
-                                                                    value="{{ $userShow->is_admin }}">Admin</option>
-                                                                }
-                                                            @elseif($userShow->is_admin == 1)
-                                                                {
-                                                                <option selected disabled
-                                                                    value="{{ $userShow->is_admin }}">Reseller
-                                                                </option>
-                                                            }@else{
-                                                                <option selected disabled
-                                                                    value="{{ $userShow->is_admin }}">User</option>
-                                                                }
-                                                            @endif
-                                                            <option value="2">Admin</option>
-                                                            <option value="1">Reseller</option>
-                                                            <option value="0">User</option>
-                                                        </select>
-                                                        @error('userRole')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-
                                                     <div class="form-group mt-3">
-                                                        <label for="exampleInputPassword1">New Password<span
+                                                        <label for="product_name">Product Name<span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="password" class="form-control animated-input"
-                                                            id="exampleInputPassword1" name="new_password"
-                                                            value="{{ $userShow }}" required>
-                                                        @error('new_password')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
+                                                        <input type="text" class="form-control" id="product_name"
+                                                            value="{{ $showZone->product_name }} "
+                                                            aria-describedby="emailHelp" name="product_name" required>
+
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="indo">Indo<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="indo"
+                                                            value="{{ $showZone->indo }} " aria-describedby="emailHelp"
+                                                            name="indo" required>
+
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="indo">Indo<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="indo"
+                                                            value="{{ $showZone->indo }} " aria-describedby="emailHelp"
+                                                            name="indo" required>
+
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="brazil">Brazil<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="brazil"
+                                                            value="{{ $showZone->brazil }} "
+                                                            aria-describedby="emailHelp" name="brazil" required>
+
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="indo">Global<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="global"
+                                                            value="{{ $showZone->global }} "
+                                                            aria-describedby="emailHelp" name="global" required>
+
                                                     </div>
 
-                                                    <button type="submit" class="btn btn-primary mt-3 custom-btn"
+
+                                                    <button type="submit" class="btn btn-primary mt-3"
                                                         style="background-color: #0069D9">Update</button>
                                                 </form>
                                             </div>

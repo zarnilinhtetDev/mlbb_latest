@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Models\Car;
 use App\Models\Debt;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DebtController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ZoneController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ResellerController;
 
@@ -107,7 +108,7 @@ Route::middleware('auth')->group(
 
         //Frontend Login
         // Route::get('purchase', [PurchaseController::class, 'getrole']);
-        Route::get('user', [UserController::class, 'user_register']);
+        Route::get('user', [UserController::class, 'user_register'])->name('user');
         Route::post('User_Register', [UserController::class, 'user_store']);
         Route::get('/delete_user/{id}', [UserController::class, 'delete_user']);
         Route::get('/delete_user/{id}', [UserController::class, 'delete_user']);
@@ -117,5 +118,12 @@ Route::middleware('auth')->group(
         //Upload Coin
         Route::get('upload_coin/{id}', [UserController::class, 'upload_coin']);
         Route::post('store_coin/{id}', [UserController::class, 'store_coin']);
+
+        //Zone
+        Route::get('/zone', [ZoneController::class, 'index']);
+        Route::post('/zone_register', [ZoneController::class, 'store']);
+        Route::get('zone_edit/{id}', [ZoneController::class, 'edit']);
+        Route::post('update_zone/{id}', [ZoneController::class, 'update']);
+        Route::get('/delete_zone/{id}', [ZoneController::class, 'delete']);
     }
 );

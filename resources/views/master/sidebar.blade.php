@@ -53,6 +53,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/zone') }}">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p class="pl-3">
+                                Zone
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>

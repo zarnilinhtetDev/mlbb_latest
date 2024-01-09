@@ -46,42 +46,62 @@ class ResellerController extends Controller
             //here will be checked and compare from user main coin  balance
             //if less then $p_coin_pid fial and retrun with messaage insuffician coin
 
-
-
             // compare $coin_order wtih coin balace from credit table
             // if $coin_order is less than coinbalance call the orderForm fucntion else break the loop and return message insufficient balace
-            if ($coin_balance->coin_balance >= $coin_order) {
 
-                echo $coin_balance->coin_balance;
-                $balance = $coin_balance->coin_balance;
-                $newBalance = $balance - $coin_order;
-                // $coin_balance->$coin_balance = $newBalance;
-                // $coin_balance->save();
-                // Credit::where('user_id', $userid)->update([
-                //     'coin_balance' => $newBalance
-                // ]);
-                $bb = Credit::find($coin_balance->id);
-                $bb->coin_balance = $newBalance;
-                $bb->save();
-                // dd($newBalance);
-
-
-                // $response = $this->orderForm($datas[0], $datas[1], $datas[2]);
-                // dd($coin_order);
-                // dd("die here");
-                $response[0] = (object)['message' => 'Success from sse'];
-                $response[1] = $datas[0];
-                $response[2] = $datas[1];
-                $response[3] = $datas[2];
-            } else {
-
+            if (is_null($coin_balance)) {
                 $response[0] = (object)['message' => 'Insufficient balance from sse'];
                 $response[1] = $datas[0];
                 $response[2] = $datas[1];
                 $response[3] = $datas[2];
                 //  dd($response);
-                Session::flash('message', 'Insufficient balance ');
+
                 break;
+            } else {
+                if ($coin_balance->coin_balance >= $coin_order) {
+
+                    echo $coin_balance->coin_balance;
+                    $balance = $coin_balance->coin_balance;
+                    $newBalance = $balance - $coin_order;
+                    // $coin_balance->$coin_balance = $newBalance;
+                    // $coin_balance->save();
+                    // Credit::where('user_id', $userid)->update([
+                    //     'coin_balance' => $newBalance
+                    // ]);
+
+                    // dd($newBalance);
+
+
+                    $response = $this->orderForm($datas[0], $datas[1], $datas[2]);
+                    /****** must below line unfreeze */
+                    // $cmp = strcmp("Insufficient balance", $response[0]->message);
+                    // //dd($cmp);
+                    // if ($cmp != 0) {
+                    //     $bb = Credit::find($coin_balance->id);
+                    //     $bb->coin_balance = $newBalance;
+                    //     $bb->save();
+                    // }
+
+                    $bb = Credit::find($coin_balance->id);
+                    $bb->coin_balance = $newBalance;
+                    $bb->save();
+
+                    // dd($coin_order);
+                    // dd("die here");
+                    // $response[0] = (object)['message' => 'Success from sse'];
+                    // $response[1] = $datas[0];
+                    // $response[2] = $datas[1];
+                    // $response[3] = $datas[2];
+                } else {
+
+                    $response[0] = (object)['message' => 'Insufficient balance from sse'];
+                    $response[1] = $datas[0];
+                    $response[2] = $datas[1];
+                    $response[3] = $datas[2];
+                    //  dd($response);
+                    Session::flash('message', 'Insufficient balance ');
+                    break;
+                }
             }
             // $response = $response;
             // dd($response . "what the fuck");

@@ -224,7 +224,7 @@
         box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
     }
 </style>
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-3">
     <div class="d-flex justify-content-center">
         <form id="creditForm" action="{{ route('submit-form') }}" method="post">
             @csrf <!-- Add this line to include CSRF token in your form -->
@@ -243,13 +243,13 @@
                                 <label for="credit_amount" class="custom-font col-form-label text-white">User
                                     Id</label>
                                 <input type="text" class="custom-font form-control animated-input" id="credit_amount"
-                                    name="user_id" required />
+                                    value="{{ old('user_id') }}" name="user_id" required />
                             </div>
                             <div class="col">
                                 <label for="kyats" class="custom-font col-form-label text-white">Zone
                                     ID</label>
                                 <input type="text" class="custom-font form-control animated-input" id="kyats"
-                                    name="zone_id" required />
+                                    name="zone_id" value="{{ old('zone_id') }}" required />
                             </div>
                             <div class="col-md-5" style="margin-top: 35px;">
                                 <button type="submit" class="btn btn-outline-primary custom-btn"
@@ -510,16 +510,23 @@
                     </div>
                 </div>
             </div>
+        </form>
     </div>
-    </form>
 
-</div>
+    {{-- <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; SSE Web Solutions</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer> --}}
 </div>
 
-
-</form>
-</div>
-</div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     function submitForm() {
