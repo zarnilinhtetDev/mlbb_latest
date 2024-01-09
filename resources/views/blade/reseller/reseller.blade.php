@@ -1,5 +1,157 @@
 @include('master.header')
 
+<style>
+    .content-wrapper {
+        background: #13234d;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        /* For Firefox */
+    }
+
+    .card {
+        border-radius: 32px 33px 33px 30px;
+        -webkit-border-radius: 32px 33px 33px 30px;
+        -moz-border-radius: 32px 33px 33px 30px;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    .custom-btn {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #162858, #0069D9);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s ease;
+    }
+
+
+
+    /* Add the neon light effect on hover */
+    .custom-btn:hover {
+        box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
+    }
+
+    .custom-history {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #162858, #0069D9);
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.1s ease;
+    }
+
+    .custom-history:hover {
+        box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
+    }
+
+    .animated-input {
+        border: 2px solid #ccc;
+        padding: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Add the animation effect on hover */
+    .animated-input:hover {
+        transform: scale(1.1);
+        /* Change the scale value to adjust the animation effect */
+    }
+
+    /* Define the keyframes animation */
+    @keyframes inputHoverEffect {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    /* Apply the keyframes animation on hover */
+    .animated-input:hover {
+        animation: inputHoverEffect 0.3s ease;
+    }
+
+    /* Define the keyframes for the animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Custom CSS for the gaming-themed card */
+    .gaming-card {
+        background-color: #151D2C;
+        color: #ffffff;
+        border: 2px solid #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .gaming-card .card-header {
+        background: #162858;
+        border-bottom: 2px solid #0056b3;
+        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+    }
+
+    .gaming-card .card-body {
+        padding: 0;
+        /* Remove default padding to make it tighter */
+    }
+
+    .gaming-textarea {
+        border: 2px solid #6c757d;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .scrollable-textarea {
+        color: red;
+        font-size: 11px;
+        font-family: 'Courier New', Courier, monospace;
+        overflow-y: scroll;
+        /* Add a vertical scrollbar */
+    }
+
+    @media (max-width: 425px) {
+        .custom-history {
+            margin-left: -30px;
+            font-size: 15px;
+        }
+    }
+</style>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
@@ -12,103 +164,87 @@
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+
+
                 <li class="nav-item">
                 <li>
-                    {{-- <form method="POST" action="{{ route('user.logout') }}">
+
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn btn-primary">Logout</button>
-                    </form> --}}
-                </li>
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+
                 </li>
             </ul>
         </nav>
         @include('master.sidebar')
-
-        <div class="content-wrapper" style="background-color: #162858">
+        <div class="content-wrapper">
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-
                         <div class="col-12">
-                            <!-- Content Header (Page header) -->
-                            <section class="content-header text-white">
-                                <div class="container-fluid">
-                                    <div class="row mb-2">
-                                        <div class="col-sm-6">
-                                            <h1>Reseller</h1>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ol class="breadcrumb float-sm-right">
-                                                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a
-                                                        href="{{ url('/Car_Detail') }}">Reseller</a>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div><!-- /.container-fluid -->
-                            </section>
-                            <?php
-                            $id = 1; ?>
-                            <a href="{{ url('resellerHistory', $id) }}" class="btn btn-success">History</a>
 
-                            <section class="content " style="">
-                                <div class="container ">
-                                    <div class="row justify-content-center ml-5">
-                                        <div class="col-md-6" style="height: 900px">
-                                            <div class="card" style="background-color: white">
+                            <section class="content" style="margin-top: 50px;">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8"> <!-- Adjust the column size as needed -->
+                                            <div class="card gaming-card">
                                                 <div class="card-header">
                                                     <h3 class="text-center">Reseller</h3>
                                                 </div>
-                                                <div class="justify-content-center d-flex">
-                                                    {{-- <textarea id="messageTextArea" name="message" rows="19" cols="60"
-                                                        style="color: red; font-size: 11px; font-family: 'Courier New', Courier, monospace;">
-    @if (isset($responses))
-@foreach ($responses as $response)
-User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $response[2] }}
-@endforeach
-@endif
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mb-3">
+                                                            <div id="messageTextArea" name="message" rows="19"
+                                                                cols="60"
+                                                                class="form-control gaming-textarea scrollable-textarea"
+                                                                style="color: red; font-size: 11px; font-family: 'Courier New', Courier, monospace; height: 400px">
 
 
-</textarea> --}}
+                                                                <?php if (Session::has('val')) {
+                                                                    // echo Session::get('val');
+                                                                
+                                                                    $sec_value = explode(',', Session::get('val'));
+                                                                    //  echo gettype($sec_value);
+                                                                    foreach ($sec_value as $dat) {
+                                                                        echo $dat . '<br>';
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </div>
 
-                                                    <div id="messageTextArea" name="message"
-                                                        style="color: red;font-size: 11px;font-family: 'Courier New', Courier, monospace;border:solid green 1px;padding: 10px;">
-                                                        {{-- @if (session('responses'))
-@foreach (session('responses') as $response)
-User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $response[2] }}
-@endforeach
-@endif --}}
+                                                        </div>
+                                                        <div class="col-md-6 mb-3">
+                                                            <form action="{{ url('reseller_store') }}" method="post">
+                                                                @csrf
+                                                                <input type="text" id="code" name="code"
+                                                                    class="form-control animated-input"
+                                                                    placeholder="Enter code">
 
-                                                        <?php if (Session::has('val')) {
-                                                            // echo Session::get('val');
-                                                        
-                                                            $sec_value = explode(',', Session::get('val'));
-                                                            //  echo gettype($sec_value);
-                                                            foreach ($sec_value as $dat) {
-                                                                echo $dat . '<br>';
-                                                            }
-                                                        }
-                                                        ?>
+                                                        </div>
+                                                        <div class="col mb-3">
+                                                            <button type="submit"
+                                                                class="btn btn-primary custom-btn">Submit</button>
+                                                        </div>
+                                                        </form>
+                                                        <div class="col" style="margin-left: 30px">
+                                                            <?php
+                                                            $id = 1; ?>
+                                                            <a href="{{ url('resellerHistory', $id) }}"
+                                                                class="btn btn-primary custom-history">
+                                                                History</a>
+                                                        </div>
 
                                                     </div>
-
                                                 </div>
-                                                <form action="{{ url('reseller_store') }}" method="post">
-                                                    @csrf
-                                                    <div class="card-body ml-3">
-                                                        <input type="text" id="code" name="code"
-                                                            class="form-control">
-                                                        <input type="submit" value="Submit"
-                                                            class="btn btn-primary mt-3">
-                                                    </div>
-                                                </form>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </section>
+
+
                         </div>
                     </div>
                 </div>
@@ -116,7 +252,6 @@ User Id {{ $response[0]->message }}  User Id {{ $response[1] }} Zone Id {{ $resp
         </div>
     </div>
     @include('master.footer')
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

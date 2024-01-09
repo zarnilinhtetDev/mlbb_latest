@@ -11,10 +11,60 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
         integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <style>
     body {
-        background-color: #063A6E;
+        background: #13234d;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        /* For Firefox */
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    img {
+        border-radius: 10px;
+        /* Adjust the value as needed */
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .carousel-inner .carousel-item {
+        animation: slideInFromRight 1s ease-in-out;
+    }
+
+    .custom-btn {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #162858, #0069D9);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.1s ease;
+    }
+
+    .custom-btn:hover {
+        box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
     }
 </style>
 
@@ -22,7 +72,7 @@
     <!-- Nav start -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #103a5a">
         <div class="container-fluid">
-            <a class="navbar-brand custom-font" href="#">MMN7Game</a>
+            <a class="navbar-brand custom-font"><i class="fa-solid fa-gamepad"> M2NSEVEN</i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,8 +103,8 @@
                 </form> --}}
 
 
-                {{-- <a class="nav-link text-white btn btn-primary mx-3" href="{{ asset('frontend/login.html') }}">Login</a> --}}
-                <a class="nav-link text-white btn btn-primary mx-3" href="{{ url('/login') }}">Login</a>
+                <a class="nav-link text-white btn btn-primary mx-3" href="{{ url('login') }}">Login</a>
+
 
             </div>
         </div>
@@ -63,20 +113,27 @@
     <!-- Nav End -->
 
     <!-- slide -->
-    <div class="container-fluid">
+    <div class="container mt-5">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleControls" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselExampleControls" data-bs-slide-to="2"></li>
+            </ol>
+
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="https://staticg.sportskeeda.com/editor/2023/07/fde0c-16888913542123-1920.jpg"
-                        class="d-block w-100" alt="..." height="500px">
+                        class="d-block w-100 rounded-images" alt="..." style="height: 300px;">
                 </div>
                 <div class="carousel-item">
                     <img src="https://images.prismic.io/rivalryglhf/0790c359-a179-4418-b63f-dec498bc566f_mlbb-x-jujutsu-kaisen-1024x569.jpg?auto=compress,format&rect=0,28,1024,512&w=720&h=360"
-                        class="d-block w-100" alt="..." height="500px">
+                        class="d-block w-100 rounded-images" alt="..." style="height: 300px;">
                 </div>
                 <div class="carousel-item">
                     <img src="https://cdn.oneesports.gg/cdn-data/2023/06/MLBB_Logo_LoadingScreen.jpg"
-                        class="d-block w-100" alt="..." height="500px">
+                        class="d-block w-100 rounded-images" alt="..." style="height: 300px;">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -91,7 +148,8 @@
             </button>
         </div>
     </div>
-    </div>
+
+
     <!-- slide End -->
 
     <!--Trand Card -->
@@ -111,7 +169,7 @@
                             <h5 class="card-title">Mobile Legend Bang Bang</h5>
 
                             <a href="{{ asset('frontend/login.html') }}"
-                                class="btn btn-outline-warning d-flex justify-content-center mt-5 "
+                                class="btn btn-outline-warning d-flex justify-content-center mt-5 custom-btn"
                                 style="font-weight: 900;"> Buy</a>
                         </div>
                     </div>
@@ -287,13 +345,16 @@
     </div>
     <!-- End of .container -->
 
-
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
 </body>
 
 </html>

@@ -22,12 +22,19 @@
 
 
 
-                <li>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" calss="btn">layout</button>
-                    </form>
-                </li>
+                    <ul class="navbar-nav ml-auto">
+
+
+                        <li class="nav-item">
+                        <li>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Logout</button>
+                            </form>
+
+                        </li>
+                    </ul>
             </ul>
         </nav>
         @include('master.sidebar')

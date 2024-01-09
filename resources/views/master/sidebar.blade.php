@@ -1,7 +1,23 @@
+<style>
+    aside {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    .nav-item {
+        color: #495057;
+        /* Link color */
+        transition: background-color 0.1s ease;
+    }
+
+    .nav-item:hover {
+        background-color: #0C4088;
+        /* Hover background color */
+    }
+</style>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light ml-6">Admin Dashboard</span>
+        <span class="brand-text font-weight-light ml-6"><i class="fa-solid fa-gamepad"> M2NSEVEN</i></span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -13,7 +29,7 @@
                         <i class="fa-solid fa-list"></i>
                         <p class="pl-4">
                             Main
-                            {{-- <i class="right fas fa-angle-left"></i> --}}
+
                         </p>
                     </a>
                 </li>
@@ -23,22 +39,24 @@
                             <i class="fa-solid fa-clipboard-check"></i>
                             <p class="pl-4">
                                 Reseller
-                                {{-- <i class="right fas fa-angle-left"></i> --}}
+
                             </p>
                         </a>
                     </li>
                 @endif
                 @if (auth()->user()->is_admin == 2)
-                    <a class="nav-link" href="{{ url('/user') }}">
-                        <i class="fa-solid fa-user-plus"></i>
-                        <p class="pl-3">
-                            Users
-                        </p>
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user') }}">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <p class="pl-3">
+                                Users
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
+
     </div>
-    <!-- /.sidebar -->
+
 </aside>

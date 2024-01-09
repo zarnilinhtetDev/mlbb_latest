@@ -17,7 +17,13 @@
 
 
                 <li class="nav-item">
-                <li><a class="dropdown-item btn bg-danger  logout-link" href="{{ url('/logout') }}">Logout</a></li>
+                <li>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+
                 </li>
             </ul>
         </nav>
@@ -48,6 +54,7 @@
 
                 </div>
             @endif
+
             @if (session('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     {{ session('error') }}
@@ -68,7 +75,7 @@
             @endif
             <section class="content-body">
                 <div class="row mt-6">
-                    <div class="col-md-6 offset-3">
+                    <div class="col-md-6 mx-auto">
 
                         <div class="card  p-4 mb-4">
                             <form action="{{ url('/User_Register') }}" method="post">
@@ -101,8 +108,17 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="is_admin"> Admin </label> &nbsp;
-                                    <input type="checkbox" name="is_admin" value="1">
+                                    <label for="userRole"> User Role <span class="text-danger">*</span></label>
+                                    <select class="form-select form-control" aria-label="Default select example"
+                                        name="userRole" id="userRole" required>
+                                        <option selected disabled>Choose User Role</option>
+                                        <option value="2">Admin</option>
+                                        <option value="1">Reseller</option>
+                                        <option value="0">User</option>
+                                    </select>
+                                    @error('userRole')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3"
                                     style="background-color: #0069D9">Register</button>
@@ -111,6 +127,12 @@
                     </div>
                 </div>
                 <div class="card">
+                    @if (session('change_success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('change_success') }}
+
+                        </div>
+                    @endif
                     <div class="card-header">
                         <h3 class="card-title">User Table</h3>
                     </div>
@@ -127,6 +149,8 @@
                                     <th>Create Date</th>
                                     <th>Update Date</th>
                                     <th>Action</th>
+                                    <th>Upload</th>
+                                    <th>Coin Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,8 +163,10 @@
                                         <td>{{ $userData->name }}</td>
                                         <td>{{ $userData->email }}</td>
                                         <td>
-                                            @if ($userData->is_admin)
+                                            @if ($userData->is_admin == 2)
                                                 <span class="text-primary ">Admin</span>
+                                            @elseif($userData->is_admin == 1)
+                                                <span class="text-primary ">Reseller</span>
                                             @else
                                                 <span class="text-primary ">User</span>
                                             @endif
@@ -160,7 +186,15 @@
 
                                         <td>
 
-
+                                            @if ($userData->is_admin == 0)
+                                                {{-- <form action="{{ url('change', $userData->id) }}" method="POST"> --}}
+                                                <form action="{{ route('change', $userData->id) }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $userData->id }}">
+                                                    <input type="hidden" value="2" name="is_admin">
+                                                    <button type="submit" class="btn btn-info">Make Reseller</button>
+                                                </form>
+                                            @endif
                                             <a href="{{ url('userShow', $userData->id) }}" class="btn btn-success">
                                                 <i class="fa-solid fa-pen-to-square"></i>
 
@@ -172,6 +206,21 @@
 
 
                                         </td>
+                                        <td>
+                                            <a href="{{ url('upload_coin', $userData->id) }}"><button
+                                                    class="btn btn-info">Upload
+                                                    Coin</button></a>
+                                        </td>
+                                        <td>
+
+                                            {{ $userData->credit->coin_balance ?? '0' }}
+
+
+                                        </td>
+                                        <!-- Button trigger modal -->
+
+
+                                        <!-- Modal -->
 
                                     </tr>
                                     @php
@@ -205,12 +254,5 @@
                 </div>
             </footer>
         </div>
-
+        @include('master.footer')
     </div>
-
-
-
-    </div>
-
-
-    @include('master.footer')

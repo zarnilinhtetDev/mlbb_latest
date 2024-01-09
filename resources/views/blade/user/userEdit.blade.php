@@ -21,7 +21,13 @@
 
 
 
-                <li><a class="dropdown-item btn bg-danger  logout-link" href="{{ url('/logout') }}">Logout</a></li>
+                <li>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+
                 </li>
             </ul>
         </nav>
@@ -48,7 +54,7 @@
             </section>
             <div class="container my-5">
                 <div class="row mt-6">
-                    <div class="col-md-6 offset-3">
+                    <div class="col-md-6 mx-auto">
 
                         <div class="card  p-4 mb-4">
                             <form action="{{ url('update_user', $userShow->id) }}" method="post">
@@ -69,19 +75,38 @@
                                         required>
 
                                 </div>
-                                <div class="form-group mt-3">
+                                {{-- <div class="form-group mt-3">
                                     <label for="exampleInputPassword1">New Password<span
                                             class="text-danger">*</span></label>
                                     <input type="password" class="form-control" id="exampleInputPassword1"
-                                        name="new_password" required>
+                                        name="new_password" value="{{ $userShow }}" required>
                                     @error('new_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
-                                <div class="form-group mt-3">
-                                    <label for="is_admin"> Admin </label> &nbsp;
-                                    <input type="checkbox" name="is_admin" value="1"
-                                        {{ $userShow->is_admin ? 'checked' : '' }}>
+                                </div> --}}
+                                <div class="form-group mt-3"><label for="userRole"> User Role <span
+                                            class="text-danger">*</span></label>
+                                    <select class="form-select form-control" aria-label="Default select example"
+                                        name="userRole" id="userRole" required>
+                                        @if ($userShow->is_admin == 2)
+                                            {
+                                            <option selected disabled value="{{ $userShow->is_admin }}">Admin</option>
+                                            }
+                                        @elseif($userShow->is_admin == 1)
+                                            {
+                                            <option selected disabled value="{{ $userShow->is_admin }}">Reseller
+                                            </option>
+                                        }@else{
+                                            <option selected disabled value="{{ $userShow->is_admin }}">User</option>
+                                            }
+                                        @endif
+                                        <option value="2">Admin</option>
+                                        <option value="1">Reseller</option>
+                                        <option value="0">User</option>
+                                    </select>
+                                    @error('userRole')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mt-3"
@@ -93,30 +118,25 @@
 
 
             </div>
-
-        </div>
-        </main>
-        {{-- <footer class="py-4 bg-light mt-auto">
-                        <div class="container-fluid px-4">
-                            <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright &copy; SSE Web Solutions</div>
-                                <div>
-                                    <a href="#">Privacy Policy</a>
-                                    &middot;
-                                    <a href="#">Terms &amp; Conditions</a>
-                                </div>
-                            </div>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid ">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; SSE Web Solutions</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
                         </div>
-                    </footer> --}}
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+
+
+
+
+
+
     </div>
-
-    </section>
-
-    </div>
-
-
-
-    </div>
-
-
     @include('master.footer')

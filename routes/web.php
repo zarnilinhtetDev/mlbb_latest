@@ -98,7 +98,7 @@ Route::middleware('auth')->group(
         Route::get('/resellerHistory/{id}', [ResellerController::class, 'resellerHistory']);
 
         //user
-        Route::get('user', [UserController::class, 'user_register']);
+        // Route::get('user', [UserController::class, 'user_register']);
         // Route::post('User_Register', [UserController::class, 'user_store']);
         // Route::get('/delete_user/{id}', [UserController::class, 'delete_user']);
         // Route::get('/delete_user/{id}', [UserController::class, 'delete_user']);
@@ -107,5 +107,15 @@ Route::middleware('auth')->group(
 
         //Frontend Login
         // Route::get('purchase', [PurchaseController::class, 'getrole']);
+        Route::get('user', [UserController::class, 'user_register']);
+        Route::post('User_Register', [UserController::class, 'user_store']);
+        Route::get('/delete_user/{id}', [UserController::class, 'delete_user']);
+        Route::get('/delete_user/{id}', [UserController::class, 'delete_user']);
+        Route::get('/userShow/{id}', [UserController::class, 'userShow']);
+        Route::post('/update_user/{id}', [UserController::class, 'update_user']); //change Reseller
+        Route::post('change/{id}', [UserController::class, 'change'])->name('change');
+        //Upload Coin
+        Route::get('upload_coin/{id}', [UserController::class, 'upload_coin']);
+        Route::post('store_coin/{id}', [UserController::class, 'store_coin']);
     }
 );
