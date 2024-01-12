@@ -14,6 +14,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\UploadCoinHistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,7 +119,7 @@ Route::middleware('auth')->group(
         //Upload Coin
         Route::get('upload_coin/{id}', [UserController::class, 'upload_coin']);
         Route::post('store_coin/{id}', [UserController::class, 'store_coin']);
-
+        Route::get('history/{id}', [UploadCoinHistoryController::class, 'show']);
         //Zone
         Route::get('/zone', [ZoneController::class, 'index']);
         Route::post('/zone_register', [ZoneController::class, 'store']);

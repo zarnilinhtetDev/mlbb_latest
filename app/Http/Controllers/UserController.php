@@ -6,6 +6,8 @@ use App\Models\User;
 
 use App\Models\Credit;
 use Illuminate\Http\Request;
+use App\Models\UploadCoinHistory;
+
 use Illuminate\Database\Eloquent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,9 +17,10 @@ class UserController extends Controller
 {
     public function user_register()
     {
+        $upload_coin_histories = UploadCoinHistory::latest()->get();
         $showUser_data =  User::latest()->get();
         $coins = Credit::latest()->get();
-        return view('blade.user.user', compact('showUser_data', 'coins'));
+        return view('blade.user.user', compact('showUser_data', 'coins', 'upload_coin_histories'));
     }
 
     public function user_store(Request $request)
@@ -135,6 +138,12 @@ class UserController extends Controller
 
     public function store_coin(Request $request)
     {
+
+        $coin_history = new UploadCoinHistory();
+        $coin_history->user_id = $request->user_id;
+        $coin_history->coin_balance = $request->coin;
+        $coin_history->save();
+
         $existingCoin = Credit::where('user_id', $request['user_id'])->first();
         if ($existingCoin) {
             $existingCoin = Credit::where('user_id', $request['user_id'])->first();

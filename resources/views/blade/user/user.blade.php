@@ -262,9 +262,99 @@
                                 @endif
                                 <section class="content-body">
                                     <div class="row mt-6">
+                                        <div class="my-4 ml-2"> <button type="button"
+                                                class="btn btn-default text-white custom-btn" data-toggle="modal"
+                                                data-target="#modal-xl" style="background-color: #007BFF">
+                                                User Register
+                                            </button></div>
                                         <div class="col-md-6 mx-auto">
 
-                                            <div class="card gaming-card p-4 mb-4">
+                                            <div class="modal fade" id="modal-xl">
+                                                <div class="modal-dialog modal-ml">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header" style="background-color: #0E3776">
+                                                            <h4 class="modal-title text-white">User Register</h4>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ url('/User_Register') }}" method="post">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <label for="exampleInputEmail1">Name <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="text"
+                                                                        class="form-control animated-input"
+                                                                        id="exampleInputEmail1"
+                                                                        aria-describedby="emailHelp" name="name"
+                                                                        required>
+                                                                    @error('name')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+
+                                                                </div>
+                                                                <div class="form-group mt-3">
+                                                                    <label for="exampleInputEmail1">Email address <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="email"
+                                                                        class="form-control animated-input"
+                                                                        id="exampleInputEmail1"
+                                                                        aria-describedby="emailHelp" name="email"
+                                                                        required>
+                                                                    @error('email')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="form-group mt-3">
+                                                                    <label for="exampleInputPassword1">Password <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <input type="password"
+                                                                        class="form-control animated-input"
+                                                                        id="exampleInputPassword1" name="password"
+                                                                        required>
+                                                                    @error('password')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="form-group mt-3">
+                                                                    <label for="userRole"> User Role <span
+                                                                            class="text-danger">*</span></label>
+                                                                    <select
+                                                                        class="form-select form-control animated-input"
+                                                                        aria-label="Default select example"
+                                                                        name="userRole" id="userRole" required
+                                                                        style="font-size: 13px">
+                                                                        <option selected disabled>Choose User Role
+                                                                        </option>
+                                                                        <option value="2">Admin</option>
+                                                                        <option value="1">Reseller</option>
+                                                                        <option value="0">User</option>
+                                                                    </select>
+                                                                    @error('userRole')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button"
+                                                                        class="btn btn-primary custom-btn"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary mt-3 custom-btn"
+                                                                        style="background-color: #0069D9">Register</button>
+                                                                </div>
+                                                                {{-- <button type="submit"
+                                                                    class="btn btn-primary mt-3 custom-btn"
+                                                                    style="background-color: #0069D9">Register</button> --}}
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            {{-- <div class="card gaming-card p-4 mb-4">
                                                 <form action="{{ url('/User_Register') }}" method="post">
                                                     @csrf
                                                     <div class="form-group">
@@ -315,7 +405,7 @@
                                                     <button type="submit" class="btn btn-primary mt-3 custom-btn"
                                                         style="background-color: #0069D9">Register</button>
                                                 </form>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <div class="card gaming-card">
@@ -374,7 +464,8 @@
 
                                                                 @if ($userData->is_admin == 0)
                                                                     {{-- <form action="{{ url('change', $userData->id) }}" method="POST"> --}}
-                                                                    <form action="{{ route('change', $userData->id) }}"
+                                                                    <form
+                                                                        action="{{ route('change', $userData->id) }}"
                                                                         method="POST">
                                                                         @csrf
                                                                         <input type="hidden" name="id"
@@ -386,7 +477,7 @@
                                                                     </form>
                                                                 @endif
                                                                 <a href="{{ url('userShow', $userData->id) }}"
-                                                                    class="btn btn-success mb-1">
+                                                                    class="btn btn-success mb-1 ">
                                                                     <i class="fa-solid fa-pen-to-square"></i>
 
                                                                 </a>
@@ -401,7 +492,11 @@
                                                             <td>
                                                                 <a href="{{ url('upload_coin', $userData->id) }}"><button
                                                                         class="btn btn-info btn-success">Upload
-                                                                        Coin</button></a>
+                                                                    </button></a>
+                                                                <a href="{{ url('history', $userData->id) }}"><button
+                                                                        class="btn btn-info btn-success">History
+                                                                    </button></a>
+
                                                             </td>
                                                             <td>
 

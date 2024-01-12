@@ -27,7 +27,7 @@ class ResellerController extends Controller
         $response = [];
         $responses = [];
         $coin_order = 0;
-        foreach ($data as $datas) {
+        foreach ($data as $key => $datas) {
             //*************************balance check start here */
 
             $pid = $datas[2];
@@ -72,7 +72,7 @@ class ResellerController extends Controller
                     // dd($newBalance);
 
 
-                    $response = $this->orderForm($datas[0], $datas[1], $datas[2]);
+                    $this->orderForm($datas[0], $datas[1], $datas[2]);
                     /****** must below line unfreeze */
                     // $cmp = strcmp("Insufficient balance", $response[0]->message);
                     // //dd($cmp);
@@ -88,16 +88,16 @@ class ResellerController extends Controller
 
                     // dd($coin_order);
                     // dd("die here");
-                    // $response[0] = (object)['message' => 'Success from sse'];
-                    // $response[1] = $datas[0];
-                    // $response[2] = $datas[1];
-                    // $response[3] = $datas[2];
+                    $response[$key][0] = (object)['message' => 'Success from sse'];
+                    $response[$key][1] = $datas[0];
+                    $response[$key][2] = $datas[1];
+                    $response[$key][3] = $datas[2];
                 } else {
 
-                    $response[0] = (object)['message' => 'Insufficient balance from sse'];
-                    $response[1] = $datas[0];
-                    $response[2] = $datas[1];
-                    $response[3] = $datas[2];
+                    $response[$key][0] = (object)['message' => 'Insufficient balance from sse'];
+                    $response[$key][1] = $datas[0];
+                    $response[$key][2] = $datas[1];
+                    $response[$key][3] = $datas[2];
                     //  dd($response);
                     Session::flash('message', 'Insufficient balance ');
                     break;
@@ -107,10 +107,10 @@ class ResellerController extends Controller
             // dd($response . "what the fuck");
 
             // $uid = is_object($response[0]) ? $response[0]->message : null;
-            $message = $response[0]->message;
-            $uid = isset($response[1]) ? $response[1] : null;
-            $zid = isset($response[2]) ? $response[2] : null;
-            $pid = isset($response[3]) ? $response[3] : null;
+            $message = $response[$key][0]->message;
+            $uid = isset($response[$key][1]) ? $response[$key][1] : null;
+            $zid = isset($response[$key][2]) ? $response[$key][2] : null;
+            $pid = isset($response[$key][3]) ? $response[$key][3] : null;
 
 
 
@@ -131,12 +131,20 @@ class ResellerController extends Controller
 
             // dd($response);
         }
-        // dd($response);
+
         // $responses[] = $response; correct
-        $responses[] = $response;
-        $response[0] = $response[0]->message;
+        echo (gettype($response));
+        // dd($response);
+        foreach ($response as $key => $val) {
+            //  dd($val);
+            $response[$key][0] = $val[0]->message;
+        }
+        foreach ($response as $key => $val) {
+            $response[$key] = implode(' ', $val);
+        }
+        // dd($response);
         $arr_res = $response;
-        $sec = implode(' ', $arr_res);
+        $sec = implode(',', $arr_res);
         //dd($sec);
         // if (session('responses')) {
         //     foreach (session('responses') as $value) {
