@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EndUser;
+use App\Models\Purchase;
+use App\Models\Zone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -14,7 +17,7 @@ class PurchaseController extends Controller
 
     public function submitForm(Request $request)
     {
-        // dd($request->all());
+        info($request->user_id);
         $userid = $request->user_id;
         $zoneid = $request->zone_id;
         $email = "billionmore97@gmail.com";
@@ -32,6 +35,7 @@ class PurchaseController extends Controller
             'productid' => $productid,
             'time' => $time,
         ];
+        info($sign_arr);
 
         $m_key = "b69f5758549ec089966e726a21c8c1d7";
 
@@ -40,16 +44,22 @@ class PurchaseController extends Controller
         $url = 'https://www.smile.one/smilecoin/api/getrole';
 
         $response = $this->curlPost($url, $sign_arr);
-        $response = json_decode($response);
 
+        $response = json_decode($response);
+        info(gettype($response));
+        // info($response);
+
+
+        return response()->json($response);
         // dd($response);
-        return view('dashboard', compact('response', 'userid', 'zoneid'));
+        //return view('dashboard', compact('response', 'userid', 'zoneid'));
     }
 
-    public function orderForm(Request $request)
+    public function orderForm(Request $request, Purchase $purchase)
     {
         // dd($request->all());
         // dd($request->all());
+
         $userid = $request->userid;
         $zoneid = $request->zoneid;
         $email = "billionmore97@gmail.com";
@@ -77,7 +87,8 @@ class PurchaseController extends Controller
         $response = $this->curlPost($url, $sign_arr);
         $response = json_decode($response);
 
-        dd($response);
+
+        // dd($response);
         return view('dashboard', compact('response', 'userid', 'zoneid'));
     }
 
@@ -131,5 +142,11 @@ class PurchaseController extends Controller
         curl_close($ch);
 
         return $result;
+    }
+
+    public function endUser()
+    {
+        $endUsers = EndUser::latest()->get();
+        return view('blade.enduser.enduser', compact('endUsers'));
     }
 }

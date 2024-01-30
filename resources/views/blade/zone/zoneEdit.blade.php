@@ -1,12 +1,12 @@
 @include('master.header')
 <style>
     .content-wrapper {
-        background: #13234d;
+        background: #bd0394;
         /* Fallback color if gradients are not supported */
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Safari and Chrome */
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Firefox */
     }
 
@@ -17,7 +17,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #0069D9);
+        background: linear-gradient(45deg, #3a89eb, #bd0394);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -37,7 +37,10 @@
         border-radius: 32px 33px 33px 30px;
         -webkit-border-radius: 32px 33px 33px 30px;
         -moz-border-radius: 32px 33px 33px 30px;
-        font-family: "Times New Roman", Times, serif;
+        /* font-family: "Times New Roman", Times, serif; */
+        font-family: 'Nexa', sans-serif;
+        /* Specify the font family */
+        font-weight: 800;
     }
 
     .gaming-card {
@@ -50,12 +53,16 @@
     }
 
     .gaming-card .card-header {
-        background: #162858;
+
         color: white;
         border-bottom: 2px solid #0056b3;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: #bd0394;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Firefox */
     }
 
     .gaming-card .card-body {
@@ -63,12 +70,16 @@
     }
 
     th {
-        background: #162858;
+
         color: white;
         border-bottom: 2px solid #0056b3;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: #bd0394;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Firefox */
     }
 
     .animated-input {
@@ -110,7 +121,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #fd0000);
+        background: linear-gradient(45deg, #bd0394, #3a89eb);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -150,7 +161,7 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn custom-logout">Logout</button>
+                        <button type="submit" class="btn btn-primary custom-logout">Logout</button>
                     </form>
                 </li>
                 </li>
@@ -200,7 +211,8 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="product_id"
                                                             aria-describedby="emailHelp" name="product_id"
-                                                            value="{{ $showZone->product_id }}" required>
+                                                            value="{{ $showZone->product_id }}"
+                                                            style="border-radius: 20px" required>
 
 
                                                     </div>
@@ -209,7 +221,7 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="code"
                                                             value="{{ $showZone->code }} " aria-describedby="emailHelp"
-                                                            name="code" required>
+                                                            name="code" style="border-radius: 20px" required>
 
                                                     </div>
                                                     <div class="form-group mt-3">
@@ -217,7 +229,8 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="product_name"
                                                             value="{{ $showZone->product_name }} "
-                                                            aria-describedby="emailHelp" name="product_name" required>
+                                                            aria-describedby="emailHelp" name="product_name"
+                                                            style="border-radius: 20px" required>
 
                                                     </div>
                                                     <div class="form-group mt-3">
@@ -225,23 +238,17 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="indo"
                                                             value="{{ $showZone->indo }} " aria-describedby="emailHelp"
-                                                            name="indo" required>
+                                                            name="indo" style="border-radius: 20px" required>
 
                                                     </div>
-                                                    <div class="form-group mt-3">
-                                                        <label for="indo">Indo<span
-                                                                class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" id="indo"
-                                                            value="{{ $showZone->indo }} " aria-describedby="emailHelp"
-                                                            name="indo" required>
 
-                                                    </div>
                                                     <div class="form-group mt-3">
                                                         <label for="brazil">Brazil<span
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="brazil"
                                                             value="{{ $showZone->brazil }} "
-                                                            aria-describedby="emailHelp" name="brazil" required>
+                                                            aria-describedby="emailHelp" name="brazil"
+                                                            style="border-radius: 20px" required>
 
                                                     </div>
                                                     <div class="form-group mt-3">
@@ -249,12 +256,13 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="global"
                                                             value="{{ $showZone->global }} "
-                                                            aria-describedby="emailHelp" name="global" required>
+                                                            aria-describedby="emailHelp" name="global" required
+                                                            style="border-radius: 20px">
 
                                                     </div>
 
 
-                                                    <button type="submit" class="btn btn-primary mt-3"
+                                                    <button type="submit" class="btn btn-primary mt-3 custom-btn"
                                                         style="background-color: #0069D9">Update</button>
                                                 </form>
                                             </div>

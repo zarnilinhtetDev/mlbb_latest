@@ -8,7 +8,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #fd0000);
+        background: linear-gradient(45deg, #bd0394, #3a89eb);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -39,31 +39,38 @@
 
             </ul>
 
-            <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                <li class="text-center">
+                    <div class="brand-text font-weight-bold">
+                        {{-- <img style="width: 10%" src="{{ asset('frontend/photo/m2nseven.png') }}" alt=""
+                            class="img-fluid"> --}}
+                        <span
+                            style="background:black; -webkit-background-clip: text; -webkit-text-fill-color: transparent;  font-family: 'Nexa', sans-serif;
+                            font-weight: 800;">M2N7
+                            GAME SHOP</span>
+
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
 
 
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary custom-logout">Logout</button>
+                    </form>
 
-
-
-                    <ul class="navbar-nav ml-auto">
-
-
-                        <li class="nav-item">
-                        <li>
-
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="btn custom-logout">Logout</button>
-                            </form>
-
-                        </li>
-                    </ul>
+                </li>
             </ul>
         </nav>
+
         @include('master.sidebar')
         <div class="content-wrapper">
+
+
             <!-- Main content -->
             <section class="content">
 

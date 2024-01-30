@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>M2nGameShop</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/photo/m2nseven.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/sample.css" />
@@ -44,12 +45,12 @@
     }
 
     .card {
-        background: #13234d;
+        background: #bd0394;
         /* Fallback color if gradients are not supported */
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Safari and Chrome */
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Firefox */
     }
 

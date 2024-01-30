@@ -2,13 +2,16 @@
 
 <style>
     .content-wrapper {
-        background: #13234d;
+        background: #bd0394;
         /* Fallback color if gradients are not supported */
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Safari and Chrome */
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Firefox */
+        font-family: 'Nexa', sans-serif;
+        /* Specify the font family */
+        font-weight: 800;
     }
 
     /* Define the styles for the button */
@@ -16,17 +19,17 @@
         position: relative;
         overflow: hidden;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 10px;
+        font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #0069D9);
+        background: linear-gradient(45deg, #3a89eb, #bd0394);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: bold;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        transition: box-shadow 0.1s ease;
+        transition: box-shadow 0.3s ease;
     }
 
     /* Add the neon light effect on hover */
@@ -76,7 +79,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #fd0000);
+        background: linear-gradient(45deg, #bd0394, #3a89eb);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -115,7 +118,7 @@
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn custom-logout">Logout</button>
+                        <button type="submit" class="btn btn-primary custom-logout">Logout</button>
                     </form>
 
                 </li>
@@ -159,7 +162,7 @@
                                     name="user_id" value="{{ $user->id }}" required>
                                 <label for="exampleInputEmail1">Coin <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control animated-input" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" name="coin" required>
+                                    aria-describedby="emailHelp" name="coin" style="border-radius: 20px" required>
                                 @error('coin')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

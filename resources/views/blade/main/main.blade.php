@@ -31,12 +31,12 @@
 
     .PcDiamant-ul li:hover {
         transform: scale(1.1);
-        background-color: greenyellow;
+        background-color: rgb(223, 223, 223);
         /* Apply the "touch light" effect on hover */
     }
 
 
-    @media only screen and (width: 320px) {
+    @media (min-width: 320px) {
 
         .custom-btn {
             margin-top: 1%
@@ -50,81 +50,91 @@
         .custom-col-1 {
             min-width: 100%;
         }
+
+        ul>li {
+            min-width: 45%;
+        }
+
+        #carouselExampleControls {
+            display: none;
+        }
+
+
+
     }
 
-    @media only screen and (width: 375px) {
+    @media (min-width: 599px) {
 
-        .custom-btn {
-            margin-top: 1%
-        }
-
-        .custom-col {
-            /* Three columns on larger screens */
-            width: 44%;
-        }
-
-        .custom-col-1 {
-            min-width: 100%;
+        #carouselExampleControls {
+            display: block;
         }
     }
 
+    /* Default styles for the image */
 
-    @media only screen and (width: 425px) {
 
-        .custom-btn {
-            margin-top: 1%
+    @media (min-width: 280px) {
+
+        ul>li {
+            min-width: 45%;
+        }
+    }
+
+    @media (min-width: 600px) {
+        ul>li {
+            min-width: 30%;
         }
 
+        #carouselExampleControl {
+            display: none;
+        }
+
+    }
+
+    @media (width: 345px) {
+
+        /* Hide the second image */
+        .navbar-brand img:nth-of-type(2) {
+            display: none;
+        }
+
+        /* Show the first image */
+        .navbar-brand img:first-of-type {
+            display: inline-block;
+        }
+    }
+
+    @media (min-width: 1500px) {
         .custom-col {
             /* Three columns on larger screens */
             width: 50%;
+            min-height: 130px;
+            margin-top: 5px;
         }
 
-        .custom-col-1 {
-            min-width: 100%;
-        }
+
     }
 
-    @media only screen and (width: 1024px) {
-
-        .custom-btn {
-            margin-top: 1%
-        }
-
+    @media (min-width: 2000px) {
         .custom-col {
             /* Three columns on larger screens */
-            min-width: 50%;
+            width: 50%;
+            min-height: 180px;
+            margin-top: 5px;
         }
 
-        .custom-col-1 {
-            min-width: 100%;
-        }
+
     }
 
-    @media only screen and (width: 768px) {
-
-        .custom-btn {
-            margin-top: 1%
-        }
-
+    @media (width: 2560px) {
         .custom-col {
             /* Three columns on larger screens */
-            min-width: 50%;
+            width: 50%;
+            min-height: 200px;
+            margin-top: 5px;
         }
 
-        .custom-col-1 {
-            min-width: 100%;
-        }
-    }
 
-    @media (min-width: 2560px) {
-        .custom {
-            margin-top: -10px;
-            /* Adjust this value to fit your layout */
-            position: relative;
-            top: -5px;
-            /* Adjust this value to fit your layout */
-        }
     }
 
     /* Define the styles for the button */
@@ -132,17 +142,17 @@
         position: relative;
         overflow: hidden;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 10px;
+        font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #0069D9);
+        background: linear-gradient(45deg, #3a89eb, #bd0394);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: bold;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        transition: box-shadow 0.1s ease;
+        transition: box-shadow 0.3s ease;
     }
 
     /* Add the neon light effect on hover */
@@ -192,12 +202,17 @@
 
 
 
-        background: #13234d;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-
-        font-family: "Times New Roman", Times, serif;
+        background: #bd0394;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Firefox */
+        /* font-family: "Times New Roman", Times, serif; */
+        font-family: 'Nexa', sans-serif;
+        /* Specify the font family */
+        font-weight: 800;
     }
 
 
@@ -206,31 +221,80 @@
         position: relative;
         overflow: hidden;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 10px;
+        font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #0069D9);
+        background: linear-gradient(45deg, #3a89eb, #bd0394);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: bold;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        transition: box-shadow 0.1s ease;
+        transition: box-shadow 0.3s ease;
     }
 
     /* Add the neon light effect on hover */
     .btn-lg:hover {
         box-shadow: 0 0 20px rgba(14, 221, 248, 0.8);
     }
+
+    img {
+        border-radius: 10px;
+        /* Adjust the value as needed */
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .carousel-inner .carousel-item {
+        animation: slideInFromRight 1s ease-in-out;
+    }
+
+    @media (min-width: 599px) {
+
+        #carouselExampleControls {
+            display: block;
+        }
+    }
 </style>
 <div class="container-fluid mt-3">
     <div class="d-flex justify-content-center">
-        <form id="creditForm" action="{{ route('submit-form') }}" method="post">
+        <form id="creditForm" action="" method="post">
             @csrf <!-- Add this line to include CSRF token in your form -->
             <div class="card" style="background-color: #162858">
                 <div class="custom-font card-header text-center text-white " style="font-size: 150%">
                     Buy Credit
+                </div>
+
+                <div class="container mt-5">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('frontend/photo/Artboard banner.jpg') }}"
+                                    class="custom-png d-block w-100 rounded-images img-fluid" alt="..."
+                                    style="height: 35vh;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="carouselExampleControl" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('frontend/photo/m2n-mobile.jpg') }}"
+                                    class="custom-png d-block w-100 rounded-images img-fluid" alt="...">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -243,39 +307,47 @@
                                 <label for="credit_amount" class="custom-font col-form-label text-white">User
                                     Id</label>
                                 <input type="text" class="custom-font form-control animated-input" id="credit_amount"
-                                    value="{{ old('user_id') }}" name="user_id" required />
+                                    value="{{ old('user_id') }}" name="user_id" style="border-radius: 20px" required />
                             </div>
                             <div class="col">
                                 <label for="kyats" class="custom-font col-form-label text-white">Zone
                                     ID</label>
                                 <input type="text" class="custom-font form-control animated-input" id="kyats"
-                                    name="zone_id" value="{{ old('zone_id') }}" required />
+                                    name="zone_id" value="{{ old('zone_id') }}" style="border-radius: 20px"
+                                    onkeyup="submitForm()" required />
                             </div>
-                            <div class="col-md-5" style="margin-top: 35px;">
-                                <button type="submit" class="btn btn-outline-primary custom-btn"
+                            <div class="col-md-5">
+                                {{-- <button type="submit" class="btn btn-outline-primary custom-btn"
                                     onclick="submitForm()">
                                     Submit
-                                </button>
+                                </button> --}}
                             </div>
 
-                            @if (isset($response))
-                                <div class="col-md-12 mt-3">
+                            <div class="col-md-12 mt-3">
+                                <span class="text-white" id="zarni" name="username"> </span>&nbsp;<span
+                                    id="iconContainer"></span>
+                            </div>
+                            {{-- @if (isset($response))
+                                <?php
+                                ?>
+                                <div class="col-md-12 mt-3" id="">
                                     <p class="text-success">User Name - {{ $response->username }} | Zone -
                                         {{ $response->zone }} | Price - {{ $response->change_price }}</p>
                                 </div>
                             @else
-                                {{-- <div class="col-md-12 mt-3 text-danger">
-                                    <p>Response is undefined.</p>
-                                </div> --}}
-                            @endif
+
+                            @endif --}}
                         </form>
 
-                        <form id="orderForm" action="{{ route('order-form') }}" method="post" class="col-md-12">
-                            @csrf
+
+                        <p id="totalshow" name="amount" class="col-md-4 text-white"></p>
+                        <form id="orderForm" action="" method="post" class="col-md-12">
+
                             <div class="mt-4">
-                                <h2 class="text-white">Select Amount</h2>
-                                <input type="text" id="selectedData" name="productName"
-                                    class="form-control col-md-3 animated-input" required>
+                                <h2 class="text-white">Select Package</h2>
+                                <div id="buttonContainer" name="product"></div>
+                                <input type="text" id="productid" name="productid" class="form-control  mt-3"
+                                    required style="display: none">
                                 <input type="text" id="productid" name="productid" class="form-control" required
                                     style="display: none">
                                 @if (isset($userid))
@@ -285,221 +357,375 @@
                                         value="{{ $zoneid }}" required style="display: none">
                                 @endif
 
-                                <div class="row mt-3">
+                                {{-- <div class="row mt-5">
                                     <div class="col-md-4 custom-col">
                                         <ul class="PcDiamant-ul commonDiamant-ul">
-                                            <li class="fr fs" ga-data="1702" id="13">
-                                                <span ga-data="1702" style="font-size: 130%">
-                                                    <em ga-data="1702">
-                                                        R$ 5,00 </em>
-                                                    <em ga-data="1702">
+                                            <li class="fr fs" ga-data="1726" id="16642">
+                                                <span ga-data="1726" style="font-size: 130%">
+                                                    <em ga-data="1726">
+                                                        R$ 6,40 </em>
+                                                    <em ga-data="1726">
                                                     </em>
-                                                    <em class="mx-5" ga-data="1702"> <img style="width: 20%"
+                                                    <em class="PcliFo-em2 mx-5" ga-data="1726"> <img style="width: 20%"
                                                             src="{{ asset('frontend/photo/diamond.png') }}"
                                                             alt="">
                                                     </em>
                                                 </span>
-                                                <span ga-data="1702">
-                                                    <div style="font-weight: 400;" ga-data="1702">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×78</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+8</strong></p>
-                                                    </div>
+                                                <span ga-data="1726">
+
+                                                    <p><strong style="color: rgb(51, 153, 153);" ga-data="1726">Passe
+                                                            Semanal de
+                                                            Diamante</strong>
+                                                    </p>
                                                 </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1702"
-                                                    style="display: block;"></div>
-                                            </li>
-                                            <li class="fr fs " ga-data="1705" id="26">
-                                                <span ga-data="1703" style="font-size: 130%">
-                                                    <em ga-data="1703">
-                                                        R$ 10,00 </em>
-                                                    <em ga-data="1703">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1703">
-                                                    <div style="font-weight: 400;" ga-data="1703">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×156</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+16</strong></p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1703"></div>
-                                            </li>
-                                            <li class="fr fs" ga-data="1704" id="25">
-                                                <span ga-data="1704" style="font-size: 130%">
-                                                    <em ga-data="1704">
-                                                        R$ 15,00 </em>
-                                                    <em ga-data="1704">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1704">
-                                                    <div style="font-weight: 400;" ga-data="1704">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×234</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+23</strong></p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1704"
-                                                    style="display: none;">
-                                                </div>
-                                            </li>
-                                            <!-- Add more list items as needed -->
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4 custom-col">
-                                        <ul class="PcDiamant-ul commonDiamant-ul">
-                                            <li class="fr fs" ga-data="1704" id="25">
-                                                <span ga-data="1705" style="font-size: 130%">
-                                                    <em ga-data="1705">
-                                                        R$ 40,00 </em>
-                                                    <em ga-data="1705">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1705">
-                                                    <div style="font-weight: 400;" ga-data="1705">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×625</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+81</strong></p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1705">
-                                                </div>
-                                            </li>
-                                            <li class="fr fs" ga-data="1705" id="26">
-                                                <span ga-data="1706" style="font-size: 130%">
-                                                    <em ga-data="1706">
-                                                        R$ 120,00 </em>
-                                                    <em ga-data="1706">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1706">
-                                                    <div style="font-weight: 400;" ga-data="1706">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×1860</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+335</strong>
-                                                        </p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1706">
-                                                </div>
-                                            </li>
-                                            <li class="fr fs" ga-data="1705" id="26">
-                                                <span ga-data="1707" style="font-size: 130%">
-                                                    <em ga-data="1707">
-                                                        R$ 200,00 </em>
-                                                    <em ga-data="1707">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1707">
-                                                    <div style="font-weight: 400;" ga-data="1707">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×3099</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+589</strong>
-                                                        </p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1707">
-                                                </div>
-                                            </li>
-                                            <!-- Add more list items as needed -->
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4 custom-col-1">
-                                        <ul class="PcDiamant-ul commonDiamant-ul">
-                                            <li class="fr fs" ga-data="1704" id="25">
-                                                <span ga-data="1708" style="font-size: 130%">
-                                                    <em ga-data="1708">
-                                                        R$ 300,00 </em>
-                                                    <em ga-data="1708">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1708">
-                                                    <div style="font-weight: 400;" ga-data="1708">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×4649</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+883</strong>
-                                                        </p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1708">
-                                                </div>
-                                            </li>
-                                            <li class="fr fs" ga-data="1705" id="26">
-                                                <span ga-data="1709" style="font-size: 130%">
-                                                    <em ga-data="1709">
-                                                        R$ 500,00 </em>
-                                                    <em ga-data="1709">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1709">
-                                                    <div style="font-weight: 400;" ga-data="1709">
-                                                        <p><strong
-                                                                style="color: rgb(51, 153, 153);">Diamond×7740</strong><strong
-                                                                style="color: rgb(255, 0, 0);">+1548</strong>
-                                                        </p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1709">
-                                                </div>
-                                            </li>
-                                            <li class="fr fs" ga-data="1705" id="26">
-                                                <span ga-data="1712" style="font-size: 130%">
-                                                    <em ga-data="1712">
-                                                        R$ 33,00 </em>
-                                                    <em ga-data="1712">
-                                                    </em>
-                                                    <em class="PcliFo-em2 mx-5" ga-data="1702"> <img
-                                                            style="width: 20%"
-                                                            src="{{ asset('frontend/photo/diamond.png') }}"
-                                                            alt="">
-                                                    </em>
-                                                </span>
-                                                <span ga-data="1712">
-                                                    <div style="font-weight: 400;" ga-data="1712">
-                                                        <p><strong style="color: rgb(51, 153, 153);">Passagem do
-                                                                crepúsculo</strong>
-                                                        </p>
-                                                    </div>
-                                                </span>
-                                                <div class="Pcright-icon commonright-icon" ga-data="1712">
-                                                </div>
                                             </li>
                                         </ul>
                                     </div>
+                                </div> --}}
+                                <div class=" mt-5">
+                                    <ul
+                                        class="PcDiamant-ul commonDiamant-ul d-flex  align-items-center   justify-content-around  flex-wrap ">
+                                        <li class="custom-col " ga-data="1726" id="16642"
+                                            style="width: 30%;height:100px" type="button" id="button1">
+                                            <div>
+                                                <span ga-data="1726">
+                                                    <em class="" ga-data="1726"> <img style="width: 20%"
+                                                            src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                            alt="">
+                                                    </em>
+                                                    <em ga-data="1726" id="1" style="font-size: 80%">
+                                                        KS 5,800
+                                                    </em>
+                                                </span>
+                                                <span ga-data="1726">
+                                                    <div style="font-weight: 400;" ga-data="1726">
+                                                        <p type="button" id="button1"><span
+                                                                style="color: rgb(51, 153, 153);font-size:13px">WeekelyPass
+                                                        </p>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1726"
+                                                style="display: block;"></div>
+                                        </li>
+
+                                        <li class="custom-col" style="width: 30%;height:100px" ga-data="1702"
+                                            id="13">
+                                            <span ga-data="1702">
+                                                <em class="" ga-data="1702"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1726" style="font-size: 80%" id="2"
+                                                    id="itemPrice">
+
+                                                    KS 4,700
+                                                </em>
+
+
+                                            </span>
+                                            <span ga-data="1702">
+                                                <div style="font-weight: 400;" ga-data="1702">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×86</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size:13px;"><strong style="color: rgb(51, 153, 153);">Diamond×86
+                                                    </strong><strong style="color: rgb(255, 0, 0);">+8</strong></p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1702"
+                                                style="display: block;"></div>
+                                        </li>
+
+                                        <li class="custom-col" style="width: 30%;height:100px" ga-data="1703"
+                                            id="23">
+                                            <span ga-data="1703">
+                                                <em class="" ga-data="1703"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1703" style="font-size: 80%" id="3">
+                                                    KS 9,400</em>
+                                                <em ga-data="1703">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1703">
+                                                <div style="font-weight: 400;" ga-data="1703">
+
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×172</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong style="color: rgb(51, 153, 153);"
+                                                        id="button1">Diamond×172</strong><strong style="color: rgb(255, 0, 0);">+16</strong></p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1703"></div>
+                                        </li>
+
+                                        <li style="width: 30%;height:100px" class="custom-col" ga-data="1704"
+                                            id="25">
+                                            <span ga-data="1704">
+                                                <em class="" ga-data="1704"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1704" style="font-size: 80%" id="4">
+                                                    KS 14,000</em>
+                                                <em ga-data="1704">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1704">
+                                                <div style="font-weight: 400;" ga-data="1704">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×257</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×234</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+23</strong></p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1704"
+                                                style="display: none;">
+                                            </div>
+                                        </li>
+
+                                        {{-- <li style="width: 30%;height:100px" class="custom-col" ga-data="" id="">
+                                        <span ga-data="">
+                                            <em class="PcliFo-em2" ga-data=""> <img style="width: 20%"
+                                                    src="{{ asset('frontend/photo/m2nseven.png') }}" alt="">
+                                            </em>
+                                            <em ga-data="" style="font-size: 80%" id="itemPrice">
+                                                KS 18,700</em>
+                                            <em ga-data="">
+                                            </em>
+
+                                        </span>
+                                        <span ga-data="">
+                                            <div style="font-weight: 400;" ga-data="">
+                                                <p type="button" id="button1"><span
+                                                        style="color: rgb(51, 153, 153);font-size:13px">Diamond×343</span> </p>
+                                                <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×343</strong><strong
+                                                        style="color: rgb(255, 0, 0);"></strong>&nbsp; &nbsp; &nbsp;
+                                                    &nbsp;</p>
+                                            </div>
+                                        </span>
+                                        <div class="Pcright-icon commonright-icon" ga-data="" style="display: none;">
+                                        </div>
+                                    </li> --}}
+
+                                        {{-- <li style="width: 30%;height:100px" class="custom-col" ga-data="" id="">
+                                        <span ga-data="">
+                                            <em class="PcliFo-em2" ga-data=""> <img style="width: 20%"
+                                                    src="{{ asset('frontend/photo/m2nseven.png') }}" alt="">
+                                            </em>
+                                            <em ga-data="" style="font-size: 80%" id="itemPrice">
+                                                KS 28,000</em>
+                                            <em ga-data="">
+                                            </em>
+
+                                        </span>
+                                        <span ga-data="">
+                                            <div style="font-weight: 400;" ga-data="">
+                                                <p type="button" id="button1"><span
+                                                        style="color: rgb(51, 153, 153);font-size:13px">Diamond×514</span> </p>
+                                                <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×514</strong><strong
+                                                        style="color: rgb(255, 0, 0);"></strong>&nbsp; &nbsp; &nbsp;
+                                                    &nbsp;</p>
+                                            </div>
+                                        </span>
+                                        <div class="Pcright-icon commonright-icon" ga-data="" style="display: none;">
+                                        </div>
+                                    </li> --}}
+
+                                        <li style="width: 30%;height:100px" class="custom-col" ga-data="1705"
+                                            id="26">
+                                            <span ga-data="1705">
+                                                <em class="PcliFo-em2" ga-data="1702"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1705" style="font-size: 80%" id="5">
+                                                    KS 37,500</em>
+                                                <em ga-data="1705">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1705">
+                                                <div style="font-weight: 400;" ga-data="1705">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×706</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×625</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+81</strong></p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1705">
+                                            </div>
+                                        </li>
+
+                                        {{-- <li style="width: 30%;height:100px" class="custom-col" ga-data="" id="">
+                                        <span ga-data="">
+                                            <em class="PcliFo-em2" ga-data=""> <img style="width: 20%"
+                                                    src="{{ asset('frontend/photo/m2nseven.png') }}" alt="">
+                                            </em>
+                                            <em ga-data="" style="font-size: 80%" id="itemPrice">
+                                                KS 56,000</em>
+                                            <em ga-data="">
+                                            </em>
+
+                                        </span>
+                                        <span ga-data="">
+                                            <div style="font-weight: 400;" ga-data="">
+                                                <p type="button" id="button1"><span
+                                                        style="color: rgb(51, 153, 153);font-size:13px">Diamond×1049</span> </p>
+                                                <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×1049</strong><strong
+                                                        style="color: rgb(255, 0, 0);">&nbsp; &nbsp; &nbsp;
+                                                        &nbsp;</strong></p>
+                                            </div>
+                                        </span>
+                                        <div class="Pcright-icon commonright-icon" ga-data="">
+                                        </div>
+                                    </li> --}}
+
+                                        <li style="width: 30%;height:100px" class="custom-col" ga-data="1706"
+                                            id="27">
+                                            <span ga-data="1706">
+                                                <em class="PcliFo-em2" ga-data="1706"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1706" style="font-size: 80%" id="6">
+                                                    KS 113,000</em>
+                                                <em ga-data="1706">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1706">
+                                                <div style="font-weight: 400;" ga-data="1706">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×2195</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×1860</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+335</strong>&nbsp;&nbsp;
+                                                </p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1706">
+                                            </div>
+                                        </li>
+
+                                        <li style="width: 30%;height:100px" class="custom-col" ga-data="1706"
+                                            id="28">
+                                            <span ga-data="1706">
+                                                <em class="PcliFo-em2" ga-data="1706"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1706" style="font-size: 80%" id="7">
+                                                    KS 188,000</em>
+                                                <em ga-data="1706">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1706">
+                                                <div style="font-weight: 400;" ga-data="1706">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×3688</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×1860</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+335</strong>&nbsp;&nbsp;
+                                                </p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1706">
+                                            </div>
+                                        </li>
+
+                                        <li style="width: 30%;height:100px" class="custom-col" ga-data="1706"
+                                            id="29">
+                                            <span ga-data="1706">
+                                                <em class="PcliFo-em2" ga-data="1706"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1706" style="font-size: 80%" id="8">
+                                                    KS 299,500</em>
+                                                <em ga-data="1706">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1706">
+                                                <div style="font-weight: 400;" ga-data="1706">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×5532</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×1860</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+335</strong>&nbsp;&nbsp;
+                                                </p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1706">
+                                            </div>
+                                        </li>
+                                        {{-- <li style="width: 30%;height:100px" class="fr fs" ga-data="1709" id="30">
+                                        <span ga-data="1709">
+                                            <em class="PcliFo-em2" ga-data="1709"> <img style="width: 20%"
+                                                    src="{{ asset('frontend/photo/m2nseven.png') }}" alt="">
+                                            </em>
+                                            <em ga-data="1709" style="font-size: 80%">
+                                                KS 469,000</em>
+                                            <em ga-data="1709">
+                                            </em>
+
+                                        </span>
+                                        <span ga-data="1709">
+                                            <div style="font-weight: 400;" ga-data="1709">
+                                                <p style="font-size: 13px"><strong style="color: rgb(51, 153, 153);">Diamond×7740</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+1548</strong>
+                                                </p>
+                                            </div>
+                                        </span>
+                                        <div class="Pcright-icon commonright-icon" ga-data="1709">
+                                        </div>
+                                    </li> --}}
+
+                                        <li style="width: 30%;height:100px" class="custom-col" ga-data="1706"
+                                            id="30">
+                                            <span ga-data="1706">
+                                                <em class="PcliFo-em2" ga-data="1706"> <img style="width: 20%"
+                                                        src="{{ asset('frontend/photo/m2nseven.png') }}"
+                                                        alt="">
+                                                </em>
+                                                <em ga-data="1706" style="font-size: 80%" id="9">
+                                                    KS 469,000</em>
+                                                <em ga-data="1706">
+                                                </em>
+
+                                            </span>
+                                            <span ga-data="1706">
+                                                <div style="font-weight: 400;" ga-data="1706">
+                                                    <p type="button" id="button1"><span
+                                                            style="color: rgb(51, 153, 153);font-size:13px">Diamond×9288</span>
+                                                    </p>
+                                                    {{-- <p class="custom-font" style="font-size: 13px"><strong
+                                                        style="color: rgb(51, 153, 153);">Diamond×1860</strong><strong
+                                                        style="color: rgb(255, 0, 0);">+335</strong>&nbsp;&nbsp;
+                                                </p> --}}
+                                                </div>
+                                            </span>
+                                            <div class="Pcright-icon commonright-icon" ga-data="1706">
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-outline-primary btn-lg">Submit</button>
@@ -507,6 +733,7 @@
 
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -527,16 +754,33 @@
     </footer> --}}
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
+{{-- main code --}}
+{{-- <script>
     function submitForm() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         var formData = $('#creditForm').serialize();
+        //    var uid=$('#user_id').val();
+        //    var zid=$('#zone_id').val();
+        //    info = [];
+        //     info[0] = uid;
+        //     info[1] = zid;
+
         $.ajax({
             type: 'POST',
             url: "{{ route('submit-form') }}", // Use the same route as in the form action
+            // data: {info:info},
             data: formData,
             success: function(response) {
                 // Display the response data where you want
+                //alert(response.username)
+                $('#zarni').text("User ID :: " + response.username + '|' + "Zone :: " + response.zone +
+                    '|' + "price :: " + response.change_price);
                 console.log(response);
             },
             error: function(error) {
@@ -544,22 +788,219 @@
             }
         });
     }
+</script> --}}
 
-    // jQuery code to handle the click event on list items
-    $(document).ready(function() {
-
-        $('.PcDiamant-ul li').click(function() {
-
-            //alert("as" + $(this).val());
-
-            // Get the text content of the clicked li
-            var selectedText = $(this).text().trim();
-            var productid = $(this).val();
+{{-- main code --}}
 
 
-            // Update the input with the selected text
-            $('#selectedData').val(selectedText);
-            $('#productid').val(productid);
+
+<script>
+    function submitForm() {
+        // Your existing AJAX setup and request here...
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
+
+        var formData = $('#creditForm').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('submit-form') }}",
+            data: formData,
+            success: function(response) {
+                // var textContent = response.username;
+                $('#zarni').text("UserName - " + response.username);
+                console.log(response);
+
+                if (response.zone === 1) {
+                    if (response.change_price === 1.25) {
+                        // Assuming response.zone is 1, we add the icon to the container
+                        const iconContainer = document.getElementById('iconContainer');
+                        const package1 = document.getElementById('1');
+                        const package2 = document.getElementById('2');
+                        const package3 = document.getElementById('3');
+                        const package4 = document.getElementById('4');
+                        const package5 = document.getElementById('5');
+                        const package6 = document.getElementById('6');
+                        const package7 = document.getElementById('7');
+                        const package8 = document.getElementById('8');
+                        const package9 = document.getElementById('9');
+
+
+                        if (iconContainer) {
+                            iconContainer.innerHTML =
+                                '<img src="{{ asset('frontend/photo/global.png') }}" alt="Flag" style="width: 30px;">';
+                            package1.innerHTML = 'KS 5,800';
+                            package2.innerHTML = 'KS 4,700';
+                            package3.innerHTML = 'KS 9,400';
+                            package4.innerHTML = 'KS 14,000';
+                            package5.innerHTML = 'KS 37,500';
+                            package6.innerHTML = 'KS 113,000';
+                            package7.innerHTML = 'KS 188,000';
+                            package8.innerHTML = 'KS 299,500';
+                            package9.innerHTML = 'KS 469,000';
+
+                        }
+
+
+                    }
+                    if (response.change_price === 1.3) {
+                        const iconContainer = document.getElementById('iconContainer');
+                        const package1 = document.getElementById('1');
+                        const package2 = document.getElementById('2');
+                        const package3 = document.getElementById('3');
+                        const package4 = document.getElementById('4');
+                        const package5 = document.getElementById('5');
+                        const package6 = document.getElementById('6');
+                        const package7 = document.getElementById('7');
+                        const package8 = document.getElementById('8');
+                        const package9 = document.getElementById('9');
+                        if (iconContainer) {
+                            iconContainer.innerHTML =
+                                '<img src="{{ asset('frontend/photo/indo.png') }}" alt="Flag" style="width: 20px;">';
+                            package1.innerHTML = 'KS 7,100';
+                            package2.innerHTML = 'KS 5,900';
+                            package3.innerHTML = 'KS 11,300';
+                            package4.innerHTML = 'KS 16,600';
+                            package5.innerHTML = 'KS 43,750';
+                            package6.innerHTML = 'KS 131,700';
+                            package7.innerHTML = 'KS 219,000';
+                            package8.innerHTML = 'KS 348,600';
+                            package9.innerHTML = 'KS 546,200';
+                        }
+
+
+                    }
+                }
+                if (response.zone === 0) {
+                    const iconContainer = document.getElementById('iconContainer');
+                    const package1 = document.getElementById('1');
+                    const package2 = document.getElementById('2');
+                    const package3 = document.getElementById('3');
+                    const package4 = document.getElementById('4');
+                    const package5 = document.getElementById('5');
+                    const package6 = document.getElementById('6');
+                    const package7 = document.getElementById('7');
+                    const package8 = document.getElementById('8');
+                    const package9 = document.getElementById('9');
+                    if (iconContainer) {
+                        iconContainer.innerHTML =
+                            '<img src="{{ asset('frontend/photo/brazil.png') }}" alt="Flag" style="width: 30px;">';;
+                        package1.innerHTML = 'KS 4,600';
+                        package2.innerHTML = 'KS 3,800';
+                        package3.innerHTML = 'KS 7,500';
+                        package4.innerHTML = 'KS 11,000';
+                        package5.innerHTML = 'KS 29,700';
+                        package6.innerHTML = 'KS 89,700';
+                        package7.innerHTML = 'KS 149,200';
+                        package8.innerHTML = 'KS 238,200';
+                        package9.innerHTML = 'KS 376,600';
+                    }
+                }
+
+
+                // $('#zarni').text(textContent);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+</script>
+
+{{-- zn_code --}}
+<script>
+    $(document).ready(function() {
+        var selectedOptions = [];
+        var clickCounter = 0;
+        var maxClicks = 4;
+
+        $(".custom-col").click(function() {
+            if (clickCounter < maxClicks) {
+                var buttonText = $(this).find("span div p span").text();
+                // var itemPrice = parseInt($(this).find("span em#1 em#2").text().replace("KS ", "")
+                //     .replace(",", ""));
+
+
+                var itemPrice = parseInt($(this).find(
+                        "span em#1,em#2,em#3,em#4,em#5,em#6,em#7,em#8,em#9").text()
+                    .replace("KS ",
+                        "").replace(",", ""));
+
+
+                // var package1Text = document.getElementById('1').textContent.trim();
+
+                // // Use package1Text in your find method
+                // var itemPrice = parseInt($(this).find("span em:contains('" + package1Text + "')").text()
+                //     .replace("KS ", "").replace(",", ""));
+
+                // Calculate itemPrice here
+                // var itemPrice = parseInt(package1.textContent.replace("KS ", "").replace(",", ""));
+                // // Use itemPrice as needed
+                // console.log(itemPrice);
+
+                var cs = selectedOptions.length + 1;
+                selectedOptions.push({
+                    index: cs,
+                    text: buttonText,
+                    price: itemPrice
+                });
+
+                // Add the new option to the textarea and clear the background color
+                updateInputBox();
+
+                // Create a button next to the selected option with a cancel option
+                var button = $("<button>").text(buttonText).addClass("btn btn-primary btn-sm mx-2 mt-1")
+                    .css(
+                        "background-color",
+                        "#5969D6");
+
+                // Add an icon for the cancel button
+                var cancelIcon = $("<i>").addClass("fa-solid fa-delete-left mx-2");
+                button.append(cancelIcon);
+
+                $("#buttonContainer").append(button);
+
+                // Add click event for the cancel icon
+                cancelIcon.click(function() {
+                    var index = $(this).parent().index();
+                    selectedOptions.splice(index, 1);
+                    $(this).parent().remove();
+                    updateInputBox();
+                    clickCounter--;
+                    calculateTotal();
+                });
+
+                clickCounter++;
+                calculateTotal();
+            }
+        });
+
+        // function calculateTotal() {
+        //     var total = 0;
+        //     for (var i = 0; i < selectedOptions.length; i++) {
+        //         total += selectedOptions[i].price;
+        //     }
+        //     $("#totalshow").text(total); // Change here to update a <p> tag
+        // }
+        function calculateTotal() {
+            var total = 0;
+            for (var i = 0; i < selectedOptions.length; i++) {
+                total += selectedOptions[i].price;
+            }
+            var formattedTotal = total.toLocaleString(); // Format total with thousands separator
+            $("#totalshow").text("Total - " + formattedTotal + " Ks");
+        }
+
+
+        function updateInputBox() {
+            var dataToShow = selectedOptions.map(option => option.index + ". " + option.text).join("\n");
+            $("#inputBox").val(dataToShow);
+        }
     });
 </script>
+{{-- zn_code --}}
+
+{{-- testing --}}

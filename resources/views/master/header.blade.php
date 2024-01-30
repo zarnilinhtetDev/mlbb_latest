@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>M2nGameShop</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/photo/images (1).jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/photo/m2nseven.png') }}">
 
     <!-- Google Font: Source Sans Pro -->
 

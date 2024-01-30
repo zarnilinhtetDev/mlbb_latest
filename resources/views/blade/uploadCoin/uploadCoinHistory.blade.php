@@ -2,12 +2,12 @@
 
 <style>
     .content-wrapper {
-        background: #13234d;
+        background: #bd0394;
         /* Fallback color if gradients are not supported */
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Safari and Chrome */
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Firefox */
     }
 
@@ -15,7 +15,10 @@
         border-radius: 32px 33px 33px 30px;
         -webkit-border-radius: 32px 33px 33px 30px;
         -moz-border-radius: 32px 33px 33px 30px;
-        font-family: "Times New Roman", Times, serif;
+        /* font-family: "Times New Roman", Times, serif; */
+        font-family: 'Nexa', sans-serif;
+        /* Specify the font family */
+        font-weight: 800;
     }
 
     .gaming-card {
@@ -28,12 +31,16 @@
     }
 
     .gaming-card .card-header {
-        background: #162858;
+
         color: white;
         border-bottom: 2px solid #0056b3;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: #bd0394;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Firefox */
     }
 
     .gaming-card .card-body {
@@ -41,12 +48,16 @@
     }
 
     th {
-        background: #162858;
+
         color: white;
         border-bottom: 2px solid #0056b3;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: #bd0394;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Firefox */
     }
 
     .custom-logout {
@@ -56,7 +67,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #fd0000);
+        background: linear-gradient(45deg, #bd0394, #3a89eb);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -96,7 +107,7 @@
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn custom-logout">Logout</button>
+                        <button type="submit" class="btn btn-primary custom-logout">Logout</button>
                     </form>
 
                 </li>

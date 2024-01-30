@@ -1,12 +1,12 @@
 @include('master.header')
 <style>
     .content-wrapper {
-        background: #13234d;
+        background: #bd0394;
         /* Fallback color if gradients are not supported */
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Safari and Chrome */
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
         /* For Firefox */
     }
 
@@ -17,7 +17,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #0069D9);
+        background: linear-gradient(45deg, #3a89eb, #bd0394);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -37,7 +37,10 @@
         border-radius: 32px 33px 33px 30px;
         -webkit-border-radius: 32px 33px 33px 30px;
         -moz-border-radius: 32px 33px 33px 30px;
-        font-family: "Times New Roman", Times, serif;
+        /* font-family: "Times New Roman", Times, serif; */
+        font-family: 'Nexa', sans-serif;
+        /* Specify the font family */
+        font-weight: 800;
     }
 
     .gaming-card {
@@ -50,26 +53,22 @@
     }
 
     .gaming-card .card-header {
-        background: #162858;
+
         color: white;
         border-bottom: 2px solid #0056b3;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
+        background: #bd0394;
+        /* Fallback color if gradients are not supported */
+        background: linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        background: -webkit-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Safari and Chrome */
+        background: -moz-linear-gradient(295deg, #bd0394 0%, #3a89eb 80%);
+        /* For Firefox */
     }
 
     .gaming-card .card-body {
         padding: 0;
     }
 
-    th {
-        background: #162858;
-        color: white;
-        border-bottom: 2px solid #0056b3;
-        background: linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -webkit-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-        background: -moz-linear-gradient(295deg, #13234d 0%, #0851aa 80%);
-    }
 
     .animated-input {
         border: 2px solid #ccc;
@@ -110,7 +109,7 @@
         padding: 10px;
         font-size: 15px;
         cursor: pointer;
-        background: linear-gradient(45deg, #162858, #fd0000);
+        background: linear-gradient(45deg, #bd0394, #3a89eb);
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -150,7 +149,7 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn custom-logout">Logout</button>
+                        <button type="submit" class="btn btn-primary custom-logout">Logout</button>
                     </form>
                 </li>
                 </li>
@@ -190,12 +189,12 @@
 
                                     </div>
                                 @endif
-                                @if (session('error'))
+                                {{-- @if (session('error'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         {{ session('error') }}
 
                                     </div>
-                                @endif
+                                @endif --}}
                                 @if (session('success_import'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         {{ session('success_import') }}
@@ -223,7 +222,8 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control animated-input"
                                                             id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                            name="name" value="{{ $userShow->name }}" required>
+                                                            name="name" value="{{ $userShow->name }}"
+                                                            style="border-radius: 20px" required>
 
 
                                                     </div>
@@ -232,7 +232,8 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="email" class="form-control animated-input"
                                                             id="exampleInputEmail1" value="{{ $userShow->email }} "
-                                                            aria-describedby="emailHelp" name="email" required>
+                                                            aria-describedby="emailHelp" name="email"
+                                                            style="border-radius: 20px" required>
 
                                                     </div>
 
@@ -240,7 +241,7 @@
                                                                 class="text-danger">*</span></label>
                                                         <select class="form-select form-control animated-input"
                                                             aria-label="Default select example" name="userRole"
-                                                            id="userRole" required>
+                                                            id="userRole" style="border-radius: 20px" required>
                                                             @if ($userShow->is_admin == 2)
                                                                 {
                                                                 <option selected disabled
@@ -270,7 +271,7 @@
                                                                 class="text-danger">*</span></label>
                                                         <input type="password" class="form-control animated-input"
                                                             id="exampleInputPassword1" name="new_password"
-                                                            value="{{ $userShow }}" required>
+                                                            style="border-radius: 20px" required>
                                                         @error('new_password')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
