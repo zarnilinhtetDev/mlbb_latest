@@ -345,7 +345,7 @@
 
                             <div class="mt-4">
                                 <h2 class="text-white">Select Package</h2>
-                                <div id="buttonContainer" name="product"></div>
+                                <div id="buttonContainer" class="row" name="product"></div>
                                 <input type="text" id="productid" name="productid" class="form-control  mt-3"
                                     required style="display: none">
                                 <input type="text" id="productid" name="productid" class="form-control" required
@@ -911,7 +911,7 @@
 </script>
 
 {{-- zn_code --}}
-<script>
+<!-- <script>
     $(document).ready(function() {
         var selectedOptions = [];
         var clickCounter = 0;
@@ -930,16 +930,7 @@
                         "").replace(",", ""));
 
 
-                // var package1Text = document.getElementById('1').textContent.trim();
 
-                // // Use package1Text in your find method
-                // var itemPrice = parseInt($(this).find("span em:contains('" + package1Text + "')").text()
-                //     .replace("KS ", "").replace(",", ""));
-
-                // Calculate itemPrice here
-                // var itemPrice = parseInt(package1.textContent.replace("KS ", "").replace(",", ""));
-                // // Use itemPrice as needed
-                // console.log(itemPrice);
 
                 var cs = selectedOptions.length + 1;
                 selectedOptions.push({
@@ -952,39 +943,57 @@
                 updateInputBox();
 
                 // Create a button next to the selected option with a cancel option
-                var button = $("<button>").text(buttonText).addClass("btn btn-primary btn-sm mx-2 mt-1")
-                    .css(
-                        "background-color",
-                        "#5969D6");
+                var inputGroup = $("<div>")
+                    .addClass("input-group")
+                    .css({
+                        "width": "250px",
 
-                // Add an icon for the cancel button
-                var cancelIcon = $("<i>").addClass("fa-solid fa-delete-left mx-2");
-                button.append(cancelIcon);
 
-                $("#buttonContainer").append(button);
+                    });
+                // Create the input element
+                var inputElement = $("<input>").val(buttonText + " - " + itemPrice.toLocaleString() +
+                        " Ks")
+                    .addClass("btn-sm disabled mt-2")
+                    .attr("name", "package" + i)
+                    .prop("readonly", true)
+                    .css({
+                        "border-color": "#FFFFFF",
+                        "font-weight": "bold",
+                        "border-radius": "15px", // Set border radius to 15px
+                        "background-color": "#843eba" // Set background color to a specific color code
+                    }); // Set input as read-only
 
-                // Add click event for the cancel icon
-                cancelIcon.click(function() {
-                    var index = $(this).parent().index();
-                    selectedOptions.splice(index, 1);
-                    $(this).parent().remove();
-                    updateInputBox();
-                    clickCounter--;
-                    calculateTotal();
-                });
+                // Append the input element to the input group
+                inputGroup.append(inputElement);
+
+                // Create the remove button
+                var removeButton = $("<i>").addClass("fa-solid fa-xmark red")
+
+                    .on("click", function() {
+                        // Handle remove button click event
+                        var index = $(this).parent().index();
+                        selectedOptions.splice(index, 1);
+                        $(this).closest(".input-group").remove();
+                        updateInputBox();
+                        clickCounter--;
+                        calculateTotal();
+                        // Add any additional logic here after removing the input group
+                    });
+                removeButton.css("color", "red");
+                // Append the remove button to the input group
+                inputGroup.append(removeButton);
+
+                // Append the input group to a target element in the DOM
+                $("#buttonContainer").append(inputGroup);
+
+
 
                 clickCounter++;
+                i++;
                 calculateTotal();
             }
         });
 
-        // function calculateTotal() {
-        //     var total = 0;
-        //     for (var i = 0; i < selectedOptions.length; i++) {
-        //         total += selectedOptions[i].price;
-        //     }
-        //     $("#totalshow").text(total); // Change here to update a <p> tag
-        // }
         function calculateTotal() {
             var total = 0;
             for (var i = 0; i < selectedOptions.length; i++) {
@@ -1000,7 +1009,252 @@
             $("#inputBox").val(dataToShow);
         }
     });
+</script> -->
+<!-- <script>
+    $(document).ready(function() {
+        var selectedOptions = [];
+        var clickCounter = 0;
+        var maxClicks = 4;
+        var i = 0;
+        $(".custom-col").click(function() {
+            if (clickCounter < maxClicks) {
+                var buttonText = $(this).find("span div p span").text();
+                var itemPrice = parseInt($(this).find(
+                    "span em#1,em#2,em#3,em#4,em#5,em#6,em#7,em#8,em#9").text().replace("KS ",
+                    "").replace(",", ""));
+
+                var cs = selectedOptions.length + 1;
+                selectedOptions.push({
+                    index: cs,
+                    text: buttonText,
+                    price: itemPrice
+                });
+
+                updateInputBox();
+                // Create a container for the input group
+                // var inputGroup = $("<div>").addClass("input-group");
+                var inputGroup = $("<div>")
+                    .addClass("input-group")
+                    .css({
+                        "width": "250px",
+
+                        // Example: Set width to 300 pixels
+                        // Add more CSS properties as needed
+                    });
+                // Create the input element
+                var inputElement = $("<input>").val(buttonText + " - " + itemPrice.toLocaleString() +
+                        " Ks")
+                    .addClass("btn-sm disabled mt-2")
+                    .attr("name", "package" + i)
+                    .prop("readonly", true)
+                    .css({
+                        "border-color": "#FFFFFF",
+                        "font-weight": "bold",
+                        "border-radius": "15px", // Set border radius to 15px
+                        "background-color": "#843eba" // Set background color to a specific color code
+                    }); // Set input as read-only
+
+                // Append the input element to the input group
+                inputGroup.append(inputElement);
+
+                // Create the remove button
+                var removeButton = $("<i>").addClass("fa-solid fa-xmark red")
+                    //  $("<button>")
+                    // .addClass("btn btn-sm")
+                    // .attr("type", "button")
+                    // .html(
+                    //     '<i class="fa-solid fa-xmark "style="color:red"></i>'
+                    // ).css({
+                    //     "border-radius": "15px",
+                    //     "background-color": "#FFFFFF",
+                    //     "font-size": "12px",
+
+                    // }) // Add the remove icon (Bootstrap 5 icon used here)
+                    .on("click", function() {
+                        // Handle remove button click event
+                        var index = $(this).parent().index();
+                        selectedOptions.splice(index, 1);
+                        $(this).closest(".input-group").remove();
+                        updateInputBox();
+                        clickCounter--;
+                        calculateTotal();
+                        // Add any additional logic here after removing the input group
+                    });
+                removeButton.css("color", "red");
+                // Append the remove button to the input group
+                inputGroup.append(removeButton);
+
+                // Append the input group to a target element in the DOM
+                $("#buttonContainer").append(inputGroup);
+
+                // var inputElement = $("<input>").val(buttonText + " - " + itemPrice.toLocaleString() +
+                //         " Ks")
+                //     .addClass("btn btn-primary btn-sm mx-2 mt-1 disabled")
+                //     .css("background-color", "#5969D6")
+                //     .attr("name", "package" + i);
+
+                // var cancelIcon = $("<i>").addClass("fa-solid fa-delete-left mx-2");
+                // inputElement.append(cancelIcon);
+
+                // $("#buttonContainer").append(inputElement);
+
+                // cancelIcon.click(function() {
+                //     var index = $(this).parent().index();
+                //     selectedOptions.splice(index, 1);
+                //     $(this).parent().remove();
+                //     updateInputBox();
+                //     clickCounter--;
+                //     calculateTotal();
+                // });
+
+                clickCounter++;
+                i++;
+                calculateTotal();
+            }
+        });
+
+        function calculateTotal() {
+            var total = 0;
+            for (var i = 0; i < selectedOptions.length; i++) {
+                total += selectedOptions[i].price;
+            }
+            var formattedTotal = total.toLocaleString();
+            $("#totalshow").text("Total - " + formattedTotal + " Ks");
+            $('#total').val(formattedTotal);
+
+        }
+
+        function updateInputBox() {
+            var dataToShow = selectedOptions.map(option => option.text + " - " + option.price
+                .toLocaleString() +
+                " Ks").join("\n");
+            $("#inputBox").val(dataToShow);
+        }
+    });
+</script> -->
+<script>
+    $(document).ready(function() {
+        var selectedOptions = [];
+        var clickCounter = 0;
+        var maxClicks = 4;
+        var i = 0;
+        $(".custom-col").click(function() {
+            if (clickCounter < maxClicks) {
+                var buttonText = $(this).find("span div p span").text();
+                var itemPrice = parseInt($(this).find(
+                    "span em#1,em#2,em#3,em#4,em#5,em#6,em#7,em#8,em#9").text().replace("KS ",
+                    "").replace(",", ""));
+
+                var cs = selectedOptions.length + 1;
+                selectedOptions.push({
+                    index: cs,
+                    text: buttonText,
+                    price: itemPrice
+                });
+
+                updateInputBox();
+                // Create a container for the input group
+                // var inputGroup = $("<div>").addClass("input-group");
+                var inputGroup = $("<div>")
+                    .addClass("input-group")
+                    .css({
+                        "width": "250px",
+
+                        // Example: Set width to 300 pixels
+                        // Add more CSS properties as needed
+                    });
+                // Create the input element
+                var inputElement = $("<input>").val(buttonText + " - " + itemPrice.toLocaleString() +
+                        " Ks")
+                    .addClass("btn-sm disabled mt-2")
+                    .attr("name", "package" + i)
+                    .prop("readonly", true)
+                    .css({
+                        "border-color": "#FFFFFF",
+                        "font-weight": "bold",
+                        "border-radius": "15px", // Set border radius to 15px
+                        "background-color": "#843eba" // Set background color to a specific color code
+                    }); // Set input as read-only
+
+                // Append the input element to the input group
+                inputGroup.append(inputElement);
+
+                // Create the remove button
+                var removeButton = $("<i>").addClass("fa-solid fa-xmark red")
+                    //  $("<button>")
+                    // .addClass("btn btn-sm")
+                    // .attr("type", "button")
+                    // .html(
+                    //     '<i class="fa-solid fa-xmark "style="color:red"></i>'
+                    // ).css({
+                    //     "border-radius": "15px",
+                    //     "background-color": "#FFFFFF",
+                    //     "font-size": "12px",
+
+                    // }) // Add the remove icon (Bootstrap 5 icon used here)
+                    .on("click", function() {
+                        // Handle remove button click event
+                        var index = $(this).parent().index();
+                        selectedOptions.splice(index, 1);
+                        $(this).closest(".input-group").remove();
+                        updateInputBox();
+                        clickCounter--;
+                        calculateTotal();
+                        // Add any additional logic here after removing the input group
+                    });
+                removeButton.css("color", "red");
+                // Append the remove button to the input group
+                inputGroup.append(removeButton);
+
+                // Append the input group to a target element in the DOM
+                $("#buttonContainer").append(inputGroup);
+
+                // var inputElement = $("<input>").val(buttonText + " - " + itemPrice.toLocaleString() +
+                //         " Ks")
+                //     .addClass("btn btn-primary btn-sm mx-2 mt-1 disabled")
+                //     .css("background-color", "#5969D6")
+                //     .attr("name", "package" + i);
+
+                // var cancelIcon = $("<i>").addClass("fa-solid fa-delete-left mx-2");
+                // inputElement.append(cancelIcon);
+
+                // $("#buttonContainer").append(inputElement);
+
+                // cancelIcon.click(function() {
+                //     var index = $(this).parent().index();
+                //     selectedOptions.splice(index, 1);
+                //     $(this).parent().remove();
+                //     updateInputBox();
+                //     clickCounter--;
+                //     calculateTotal();
+                // });
+
+                clickCounter++;
+                i++;
+                calculateTotal();
+            }
+        });
+
+        function calculateTotal() {
+            var total = 0;
+            for (var i = 0; i < selectedOptions.length; i++) {
+                total += selectedOptions[i].price;
+            }
+            var formattedTotal = total.toLocaleString();
+            $("#totalshow").text("Total - " + formattedTotal + " Ks");
+            $('#total').val(formattedTotal);
+
+        }
+
+        function updateInputBox() {
+            var dataToShow = selectedOptions.map(option => option.text + " - " + option.price
+                .toLocaleString() +
+                " Ks").join("\n");
+            $("#inputBox").val(dataToShow);
+        }
+    });
 </script>
+
 {{-- zn_code --}}
 
 {{-- testing --}}
