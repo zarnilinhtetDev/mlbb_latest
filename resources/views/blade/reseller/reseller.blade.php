@@ -224,7 +224,18 @@
                                 <div id="messageTextArea" name="message" rows="19" cols="60"
                                     class="form-control gaming-textarea scrollable-textarea"
                                     style="color: red; font-size: 11px;  font-family: 'Open Sans', sans-serif; height: 300px">
-
+                                    {{-- zn --}}
+                                    @if (session('product_null'))
+                                        <div class="alert alert-danger">
+                                            {{ session('product_null') }}
+                                        </div>
+                                    @endif
+                                    @if (session('error_insufficient'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error_insufficient') }}
+                                        </div>
+                                    @endif
+                                    {{-- zn --}}
                                     @if (Session::has('val'))
                                         <?php
                                         $sec_value = explode(',', Session::get('val'));
@@ -247,7 +258,7 @@
 
                                     @if (Session::has('cart'))
                                         <?php
-                                        //$sec_value = explode(',', Session::get('cart'));
+                                        
                                         echo gettype(Session::has('cart'));
                                         $cc = Session::has('cart');
                                         ?>

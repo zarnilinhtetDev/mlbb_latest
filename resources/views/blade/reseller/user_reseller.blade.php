@@ -247,6 +247,21 @@
                             <div id="messageTextArea" name="message" rows="19" cols="60"
                                 class="form-control gaming-textarea scrollable-textarea"
                                 style="color: red; font-size: 11px; font-family: 'Open Sans', sans-serif; height: 300px">
+                                @if (session('product_null'))
+                                    <div class="alert alert-danger">
+                                        {{ session('product_null') }}
+                                    </div>
+                                @endif
+                                @if (session('error_insufficient'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error_insufficient') }}
+                                    </div>
+                                @endif
+                                @if (session('balance'))
+                                    <div class="alert alert-danger">
+                                        {{ session('balance') }}
+                                    </div>
+                                @endif
 
                                 @if (Session::has('val'))
                                     <?php

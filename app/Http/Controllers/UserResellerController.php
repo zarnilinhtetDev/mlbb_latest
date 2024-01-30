@@ -53,9 +53,20 @@ class UserResellerController extends Controller
 
             $prduct_name = $pval[2];
             $product_id = Zone::where('product_name', $prduct_name)->first('product_id');       //    dd($product_id);
+            // if (is_null($product_id)) {
+            //     dd("product id is null");
+            // }
+            //zn_productnull
             if (is_null($product_id)) {
-                dd("product id is null");
+
+                session()->flash(
+                    'product_null',
+                    "Product ID is null for this product: $prduct_name"
+                );
+
+                return redirect()->back();
             }
+            //zn_productnull
             $client_zoneid[$key] = $product_id->product_id;
         }
 
@@ -72,6 +83,15 @@ class UserResellerController extends Controller
 
 
             $coin_balance = Credit::where('user_id', $login_userid)->first(); //get coin balance from login user account
+
+            //zn
+            if ($coin_balance === null) {
+                // If credit is not found for the user, set a session message and redirect back
+                Session::flash('balance', 'Balance not found for the user.');
+                return back()->withInput();
+                // You can customize the error message as needed
+            }
+            //zn
             $get_zoneid = $this->getrole($datas[0], $datas[1], $pid);
             $zone_area = $get_zoneid[0]->zone;
             // dd(gettype($get_zoneid[0]->zone));
@@ -111,10 +131,18 @@ class UserResellerController extends Controller
             }
         }
         //dd($total_coin_order);
-        if ($data[0]['coin_balance'] < $total_coin_order) {
-            dd("you have insufficient balance");
-        }
+        // if ($data[0]['coin_balance'] < $total_coin_order) {
+        //     dd("you have insufficient balance");
+        // }
 
+        //zn_insufficient
+        if ($data[0]['coin_balance'] < $total_coin_order) {
+
+            session()->flash('error_insufficient', "You have insufficient balance");
+
+            return redirect()->back();
+        }
+        //zn_insufficient
         $super = $this->product_time($data);
 
 

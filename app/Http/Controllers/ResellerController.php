@@ -50,16 +50,33 @@ class ResellerController extends Controller
         // $balance = $credits->coin_balance;
 
 
-        foreach ($data as $key => $pval) {
+        // foreach ($data as $key => $pval) {
 
+        //     $prduct_name = $pval[2];
+        //     $product_id = Zone::where('product_name', $prduct_name)->first('product_id');       //    dd($product_id);
+        //     if (is_null($product_id)) {
+        //         dd("product id is null");
+        //     }
+        //     $client_zoneid[$key] = $product_id->product_id;
+        // }
+
+        //zn_productnull
+        foreach ($data as $key => $pval) {
             $prduct_name = $pval[2];
-            $product_id = Zone::where('product_name', $prduct_name)->first('product_id');       //    dd($product_id);
+            $product_id = Zone::where('product_name', $prduct_name)->first('product_id');
+
             if (is_null($product_id)) {
-                dd("product id is null");
+
+                session()->flash(
+                    'product_null',
+                    "Product ID is null for product: $prduct_name"
+                );
+
+                return redirect()->back();
             }
+
             $client_zoneid[$key] = $product_id->product_id;
         }
-
 
         //dd('asdfasdfasdfasdfasdfasd');
         $response = [];
@@ -102,20 +119,39 @@ class ResellerController extends Controller
             $data[$key]['coin_cost'] = $coin_cost;
             $data[$key]['pid'] = $pid;
         }
-        $total_coin_order = 0;
-        foreach ($data as $digit) {
+        // $total_coin_order = 0;
+        // foreach ($data as $digit) {
 
+        //     if (isset($digit[3])) {
+        //         $total_coin_order += ($digit['coin_cost'] * $digit[3]);
+        //     } else {
+        //         $total_coin_order += ($digit['coin_cost']);
+        //     }
+        // }
+        // //dd($total_coin_order);
+        // if ($data[0]['coin_balance'] < $total_coin_order) {
+        //     dd("you have insufficient balance");
+        // }
+
+
+
+        $total_coin_order = 0;
+
+        foreach ($data as $digit) {
             if (isset($digit[3])) {
                 $total_coin_order += ($digit['coin_cost'] * $digit[3]);
             } else {
                 $total_coin_order += ($digit['coin_cost']);
             }
         }
-        //dd($total_coin_order);
+        //zn_insufficient
         if ($data[0]['coin_balance'] < $total_coin_order) {
-            dd("you have insufficient balance");
-        }
 
+            session()->flash('error_insufficient', "You have insufficient balance");
+
+            return redirect()->back();
+        }
+        //zn_insufficient
         $super = $this->product_time($data);
 
 
